@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-OpenClash Overwrite Generator - 按来源分类存储版本
-Fixed Version with improvements
+OpenClash Overwrite Generator - 支持多级目录结构
+保持完整的分类层级（如 General_Config/Author1/）
 """
 import yaml
 import json
@@ -56,26 +56,34 @@ class OverwriteGenerator:
             self.logger.error(f"Error analyzing {yaml_path}: {e}")
             return None
 
-    def generate_readme(self, category_dir: Path, category_name: str, 
+    def generate_readme(self, category_dir: Path, relative_path: str, 
                        source_type: str, files_generated: List[str]):
         """为每个分类目录生成 README"""
         
-        # 根据来源确定说明文字
+        # 解析相对路径，确定说明
+        parts = relative_path.split('/')
         if source_type == 'external':
-            if 'General_Config' in category_name:
-                source_desc = "HenryChiao/mihomo_yamls/THEYAMLS/General_Config"
-                purpose = "通用配置，适合大多数使用场景"
-            elif 'Smart_Mode' in category_name:
-                source_desc = "HenryChiao/mihomo_yamls/THEYAMLS/Smart_Mode"
-                purpose = "Smart 智能模式专用配置，自动选择最优节点"
+            if len(parts) >= 2:
+                main_category = parts[0]  # General_Config 或 Smart_Mode
+                sub_category = parts[1]   # 作者名
+                
+                if main_category == 'General_Config':
+                    purpose = f"通用配置 - {sub_category} 作者维护"
+                    source_desc = f"HenryChiao/mihomo_yamls/THEYAMLS/{relative_path}"
+                elif main_category == 'Smart_Mode':
+                    purpose = f"Smart 智能模式 - {sub_category} 作者维护"
+                    source_desc = f"HenryChiao/mihomo_yamls/THEYAMLS/{relative_path}"
+                else:
+                    purpose = "外部同步配置"
+                    source_desc = f"HenryChiao/mihomo_yamls/THEYAMLS/{relative_path}"
             else:
-                source_desc = f"HenryChiao/mihomo_yamls/THEYAMLS/{category_name}"
                 purpose = "外部同步配置"
+                source_desc = f"HenryChiao/mihomo_yamls/THEYAMLS/{relative_path}"
         else:
-            source_desc = f"本地目录 cleaner_config/{category_name}"
+            source_desc = f"本地目录 {relative_path}"
             purpose = "用户自定义配置"
         
-        readme_content = f"""# {category_name} 覆写配置
+        readme_content = f"""# {relative_path} 覆写配置
 
 ## 📍 来源
 - **路径**: `{source_desc}`
@@ -116,7 +124,6 @@ EN_DNS=223.5.5.5,114.114.114.114
 ## 📝 生成信息
 - 生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 - 配置文件数: {len(files_generated)}
-- 原始 YAML: {category_name}
 
 ---
 *由 GitHub Actions 自动生成*
@@ -129,8 +136,8 @@ EN_DNS=223.5.5.5,114.114.114.114
         self.logger.info(f"Generated README: {readme_path}")
 
     def generate_overwrite(self, yaml_path: Path, output_path: Path, 
-                          config_def: Dict, repo_url: str, category: str, 
-                          source_type: str) -> bool:
+                          config_def: Dict, repo_url: str, 
+                          relative_path: str, source_type: str) -> bool:
         """生成单个覆写文件"""
         
         analysis = self.analyze_yaml(yaml_path)
@@ -138,15 +145,15 @@ EN_DNS=223.5.5.5,114.114.114.114
             self.logger.warning(f"No providers in {yaml_path}, skipping")
             return False
         
-        # 构建下载URL（保持分类结构）- 确保使用正斜杠
-        yaml_url = f"{repo_url}/processed_configs/{source_type}/{category}/{yaml_path.name}".replace('\\', '/')
+        # 构建下载URL（保持完整的相对路径）
+        yaml_url = f"{repo_url}/processed_configs/{source_type}/{relative_path}/{yaml_path.name}".replace('\\', '/')
         
         try:
             template = self.env.get_template('base.conf.j2')
             content = template.render(
                 config_name=analysis['name'],
                 source_type=source_type,
-                category=category,
+                category=relative_path,
                 provider_count=analysis['count'],
                 proxy_providers=analysis['proxy_providers'],
                 yaml_url=yaml_url,
@@ -167,27 +174,27 @@ EN_DNS=223.5.5.5,114.114.114.114
             self.logger.error(f"Failed to generate {output_path}: {e}")
             return False
 
-    def process_directory(self, input_dir: Path, output_base: Path, 
-                         repo_url: str, source_type: str) -> Dict:
-        """处理一个来源目录（保持子目录结构）"""
+    def process_directory_recursive(self, current_dir: Path, input_base: Path, 
+                                   output_base: Path, repo_url: str, 
+                                   source_type: str, stats: Dict):
+        """递归处理目录，保持完整的目录层级"""
         
-        stats = {'categories': {}, 'total': 0, 'errors': 0}
+        yaml_files = list(current_dir.glob('*.yaml'))
+        has_yaml = len(yaml_files) > 0
         
-        # 遍历子目录（General_Config, Smart_Mode 等）
-        for category_dir in input_dir.iterdir():
-            if not category_dir.is_dir():
-                continue
-            
-            category_name = category_dir.name
-            category_output = output_base / category_name
+        if has_yaml:
+            # 计算相对路径（相对于输入基础目录）
+            relative_path = str(current_dir.relative_to(input_base))
+            output_dir = output_base / relative_path
             
             self.logger.info(f"\n{'='*60}")
-            self.logger.info(f"处理分类: {category_name}")
-            self.logger.info(f"输出目录: {category_output}")
+            self.logger.info(f"处理分类: {relative_path}")
+            self.logger.info(f"输出目录: {output_dir}")
+            self.logger.info(f"YAML 文件: {len(yaml_files)} 个")
             
-            yaml_files = list(category_dir.rglob('*.yaml'))
             files_generated = []
             
+            # 处理当前目录的所有 YAML 文件
             for yaml_file in yaml_files:
                 for config_def in self.config_types:
                     try:
@@ -200,11 +207,11 @@ EN_DNS=223.5.5.5,114.114.114.114
                         else:
                             filename = f"Overwrite-{base_name}.conf"
                         
-                        output_path = category_output / filename
+                        output_path = output_dir / filename
                         
                         result = self.generate_overwrite(
                             yaml_file, output_path, config_def,
-                            repo_url, category_name, source_type
+                            repo_url, relative_path, source_type
                         )
                         
                         if result:
@@ -217,20 +224,48 @@ EN_DNS=223.5.5.5,114.114.114.114
                         self.logger.error(f"Error: {e}")
                         stats['errors'] += 1
             
-            # 生成分类 README（即使没有文件也生成）
-            self.generate_readme(category_output, category_name, 
+            # 生成当前目录的 README
+            self.generate_readme(output_dir, relative_path, 
                                source_type, files_generated)
-            stats['categories'][category_name] = len(files_generated)
+            
+            # 记录统计
+            if relative_path not in stats['categories']:
+                stats['categories'][relative_path] = 0
+            stats['categories'][relative_path] += len(files_generated)
+        
+        # 递归处理子目录
+        for sub_dir in current_dir.iterdir():
+            if sub_dir.is_dir():
+                self.process_directory_recursive(
+                    sub_dir, input_base, output_base, 
+                    repo_url, source_type, stats
+                )
+
+    def process_directory(self, input_dir: Path, output_base: Path, 
+                         repo_url: str, source_type: str) -> Dict:
+        """处理入口函数"""
+        stats = {'categories': {}, 'total': 0, 'errors': 0}
+        
+        self.logger.info(f"\n{'='*60}")
+        self.logger.info(f"开始处理: {input_dir}")
+        self.logger.info(f"输出基础: {output_base}")
+        self.logger.info(f"来源类型: {source_type}")
+        
+        # 从输入目录开始递归处理
+        self.process_directory_recursive(
+            input_dir, input_dir, output_base, 
+            repo_url, source_type, stats
+        )
         
         return stats
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Generate OpenClash overwrite configs from YAML files'
+        description='Generate OpenClash overwrite configs from YAML files (supports nested directories)'
     )
     parser.add_argument('--input', '-i', type=Path, required=True,
-                       help='输入目录（包含子目录如 General_Config/）')
+                       help='输入目录（支持多级子目录）')
     parser.add_argument('--output', '-o', type=Path, required=True,
                        help='输出基础目录')
     parser.add_argument('--templates', '-t', type=Path, 
@@ -268,8 +303,8 @@ def main():
         print(f"总计生成: {stats['total']} 个文件")
         if stats['errors'] > 0:
             print(f"⚠️  错误数: {stats['errors']}")
-        print(f"分类统计:")
-        for cat, count in stats['categories'].items():
+        print(f"\n分类统计:")
+        for cat, count in sorted(stats['categories'].items()):
             print(f"  - {cat}: {count} 个文件")
         
         return 0
