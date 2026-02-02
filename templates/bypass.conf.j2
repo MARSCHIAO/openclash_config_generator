@@ -6,136 +6,55 @@
 {# ============================================================================ #}
 
 [General]
-# ============================================================================
-# 基础配置
-# ============================================================================
 CONFIG_FILE = /etc/openclash/config/{{ config_name }}.yaml
 CORE_TYPE = Smart
 
-# ============================================================================
-# DNS 配置
-# ============================================================================
+# DNS
 ENABLE_REDIRECT_DNS = 1
-ENABLE_CUSTOM_DNS = 0
-APPEND_DEFAULT_DNS = 0
 APPEND_WAN_DNS = 1
 STORE_FAKEIP = 1
 CUSTOM_FAKEIP_FILTER = 1
 CUSTOM_FAKEIP_FILTER_MODE = blacklist
 FAKEIP_RANGE = 198.18.0.1/16
-ENABLE_RESPECT_RULES = 0
-CUSTOM_NAME_POLICY = 0
-CUSTOM_HOST = 0
-CUSTOM_FALLBACK_FILTER = 0
 
-# ============================================================================
-# IPv6 配置
-# ============================================================================
+# IPv6
 IPV6_ENABLE = 1
 IPV6_DNS = 1
-IPV6_MODE = 0
 ENABLE_V6_UDP_PROXY = 1
 
-# ============================================================================
-# 代理与模式
-# ============================================================================
+# 代理模式
 EN_MODE = fake-ip
 ENABLE_UDP_PROXY = 1
-DISABLE_UDP_QUIC = 0
 ROUTER_SELF_PROXY = 1
 PROXY_MODE = rule
 
-# ============================================================================
-# 防火墙与访问控制 (旁路由特定配置)
-# ============================================================================
+# 旁路由特有
 INTRANET_ALLOWED = 0
 BYPASS_GATEWAY_COMPATIBLE = 1
-COMMON_PORTS = 0
 
-# ============================================================================
-# 分流相关
-# ============================================================================
-CHINA_IP_ROUTE = 1
-CHINA_IP6_ROUTE = 1
-CHNR_AUTO_UPDATE = 1
-CHNR_UPDATE_WEEK_TIME = *
-CHNR_UPDATE_DAY_TIME = 0
-
-ENABLE_META_SNIFFER = 1
-ENABLE_META_SNIFFER_CUSTOM = 1
-ENABLE_META_SNIFFER_PURE_IP = 1
-
-ENABLE_TCP_CONCURRENT = 1
-FIND_PROCESS_MODE = 0
-GLOBAL_CLIENT_FINGERPRINT = 0
-ENABLE_UNIFIED_DELAY = 1
-
-ENABLE_RULE_PROXY = 1
-ENABLE_CUSTOM_CLASH_RULES = 1
-
-TOLERANCE = 30
-URLTEST_INTERVAL_MOD = 300
-
-# ============================================================================
-# 数据库加载相关
-# ============================================================================
-ENABLE_GEOIP_DAT = 1
-GEODATA_LOADER = 0
-
-GEO_AUTO_UPDATE = 1
-GEO_UPDATE_WEEK_TIME = *
-GEO_UPDATE_DAY_TIME = 1
-
-GEOIP_AUTO_UPDATE = 1
-GEOIP_UPDATE_WEEK_TIME = *
-GEOIP_UPDATE_DAY_TIME = 2
-
-GEOSITE_AUTO_UPDATE = 1
-GEOSITE_UPDATE_WEEK_TIME = *
-GEOSITE_UPDATE_DAY_TIME = 3
-
-GEOASN_AUTO_UPDATE = 1
-GEOASN_UPDATE_WEEK_TIME = *
-GEOASN_UPDATE_DAY_TIME = 4
-
-# ============================================================================
-# 其它功能
-# ============================================================================
-SMALL_FLASH_MEMORY = 0
-DISABLE_QUIC_GO_GSO = 0
-DELAY_START = 0
-SKIP_PROXY_ADDRESS = 1
-
-# ============================================================================
-# 订阅信息与文件下载
-# ============================================================================
+# 订阅信息
 {% if provider_count == 1 %}
 SUB_INFO_URL = $EN_KEY
 {% else %}
 {%- for env_var in env_variables %}
 SUB_INFO_URL{{ loop.index }} = ${{ env_var }}
-{% endfor -%}
+{%- endfor %}
 {% endif %}
 
-# 下载精简后的配置文件
+# 下载精简后的 YAML
 DOWNLOAD_FILE = url={{ yaml_download_url }}, path=/etc/openclash/config/{{ config_name }}.yaml, cron=0 6 * * *, force=true
 
-# 模块更新后重启
 RESTART = true
 
-# ============================================================================
-# 覆写规则 (Overwrite) - 旁路由必须指定 DNS
-# ============================================================================
+# 覆写规则
 [Overwrite]
 {% if provider_count == 1 %}
-# 单个订阅
-ruby_map_edit "$CONFIG_FILE" "['proxy-providers']" "provider" "['url']" "$EN_KEY"
+ruby_edit "$CONFIG_FILE" "['proxy-providers']['{{ proxy_providers[0].name }}']['url']" "$EN_KEY"
 {% else %}
-# 多个订阅
 {%- for provider in proxy_providers %}
 ruby_edit "$CONFIG_FILE" "['proxy-providers']['{{ provider.name }}']['url']" "$EN_KEY{{ loop.index }}"
-{% endfor -%}
+{%- endfor %}
 {% endif %}
 
-# 旁路由必须指定 DNS (必填变量: EN_DNS)
+# 旁路由必须指定 DNS
 ruby_edit "$CONFIG_FILE" "['dns']['nameserver']" "$EN_DNS"
