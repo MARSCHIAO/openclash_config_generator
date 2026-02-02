@@ -1,25 +1,19 @@
 #!/usr/bin/env python3
 """
-YAML Processor - 处理和精简 YAML 配置文件
-支持本地和外部配置的统一管理
+YAML Processor - 精简 YAML 配置文件
 """
-
 import yaml
 import re
-import json
-import logging
 import argparse
+import logging
 from pathlib import Path
 from typing import Dict, List, Any, Set, Optional
 
 
 class YAMLProcessor:
-    """YAML 配置处理器"""
-    
-    # OpenClash 运行所需的关键键
     KEEP_KEYS = {
         'proxy-providers',
-        'proxy-groups', 
+        'proxy-groups',
         'rule-providers',
         'rules'
     }
@@ -29,10 +23,9 @@ class YAMLProcessor:
         self.anchors = {}
 
     def extract_anchors(self, content: str) -> Dict[str, str]:
-        """提取 YAML 锚点定义"""
+        """提取 YAML 锚点"""
         anchors = {}
         pattern = r'^(\s*)&(\w+)\s+(.+)$'
-        
         for line in content.split('\n'):
             match = re.match(pattern, line)
             if match:
@@ -41,12 +34,12 @@ class YAMLProcessor:
         return anchors
 
     def find_referenced_anchors(self, content: Any) -> Set[str]:
-        """查找内容中引用的锚点"""
+        """查找引用的锚点"""
         text = yaml.dump(content, allow_unicode=True)
         return set(re.findall(r'\*(\w+)', text))
 
-    def strip_config(self, yaml_path: Path) -> Optional[Dict]:
-        """精简 YAML 配置"""
+    def process_file(self, yaml_path: Path) -> Optional[Dict]:
+        """处理单个 YAML 文件"""
         self.logger.info(f"Processing: {yaml_path}")
         
         try:
@@ -59,7 +52,7 @@ class YAMLProcessor:
             if not config:
                 return None
 
-            # 只保留必要键
+            # 只保留必要的键
             stripped = {k: config[k] for k in self.KEEP_KEYS if k in config}
             
             if not stripped:
@@ -68,7 +61,7 @@ class YAMLProcessor:
 
             # 处理锚点
             referenced = self.find_referenced_anchors(stripped)
-            if referenced:
+            if referenced and self.anchors:
                 stripped['_anchors'] = {
                     name: self.anchors[name]
                     for name in referenced if name in self.anchors
@@ -77,8 +70,10 @@ class YAMLProcessor:
             # 添加元数据
             stripped['_meta'] = {
                 'source': str(yaml_path),
-                'proxy_providers_count': len(stripped.get('proxy-providers', {})),
-                'rule_providers_count': len(stripped.get('rule-providers', {}))
+                'proxy_providers': len(stripped.get('proxy-providers', {})),
+                'rule_providers': len(stripped.get('rule-providers', {})),
+                'proxy_groups': len(stripped.get('proxy-groups', [])),
+                'rules': len(stripped.get('rules', []))
             }
             
             return stripped
@@ -87,20 +82,26 @@ class YAMLProcessor:
             self.logger.error(f"Error processing {yaml_path}: {e}")
             return None
 
-    def save_config(self, config: Dict, output_path: Path):
-        """保存配置"""
+    def save_file(self, config: Dict, output_path: Path):
+        """保存处理后的文件"""
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
-        # 分离元数据和配置
+        # 分离元数据
         meta = config.pop('_meta', {})
         anchors = config.pop('_anchors', {})
         
-        # 写入锚点
         lines = []
+        
+        # 写入头部注释
+        lines.append(f"# Processed: {meta.get('source', 'unknown')}")
+        lines.append(f"# Providers: {meta.get('proxy_providers', 0)} proxy, {meta.get('rule_providers', 0)} rule")
+        lines.append("")
+        
+        # 写入锚点
         if anchors:
             lines.extend([
                 "# ============================================================================",
-                "# Anchors Definition",
+                "# Anchors",
                 "# ============================================================================"
             ])
             for name in sorted(anchors.keys()):
@@ -116,9 +117,7 @@ class YAMLProcessor:
         )
         
         with open(output_path, 'w', encoding='utf-8') as f:
-            if lines:
-                f.write('\n'.join(lines) + '\n')
-            f.write(yaml_content)
+            f.write('\n'.join(lines) + '\n' + yaml_content)
         
         self.logger.info(f"Saved: {output_path}")
 
@@ -128,42 +127,54 @@ class YAMLProcessor:
         results = []
         pattern = '**/*.yaml' if recursive else '*.yaml'
         
-        for yaml_file in input_dir.glob(pattern):
-            if yaml_file.is_file():
+        yaml_files = list(input_dir.glob(pattern))
+        self.logger.info(f"Found {len(yaml_files)} YAML files")
+        
+        for yaml_file in yaml_files:
+            if not yaml_file.is_file():
+                continue
+                
+            try:
                 rel_path = yaml_file.relative_to(input_dir)
                 output_file = output_dir / rel_path
                 
-                config = self.strip_config(yaml_file)
+                config = self.process_file(yaml_file)
                 if config:
-                    self.save_config(config, output_file)
+                    self.save_file(config, output_file)
                     results.append({
                         'input': str(yaml_file),
                         'output': str(output_file),
                         'meta': config.get('_meta', {})
                     })
+            except Exception as e:
+                self.logger.error(f"Failed to process {yaml_file}: {e}")
         
         return results
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Process YAML configs')
     parser.add_argument('--input', '-i', type=Path, required=True)
     parser.add_argument('--output', '-o', type=Path, required=True)
-    parser.add_argument('--strip', action='store_true', help='Strip unnecessary keys')
     parser.add_argument('--recursive', '-r', action='store_true')
     parser.add_argument('--verbose', '-v', action='store_true')
     
     args = parser.parse_args()
     
+    level = logging.DEBUG if args.verbose else logging.INFO
     logging.basicConfig(
-        level=logging.DEBUG if args.verbose else logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s'
+        level=level,
+        format='%(levelname)s: %(message)s'
     )
+    
+    if not args.input.exists():
+        print(f"❌ Input directory not found: {args.input}")
+        return 1
     
     processor = YAMLProcessor()
     results = processor.process_directory(args.input, args.output, args.recursive)
     
-    print(f"\n✅ Processed {len(results)} files")
+    print(f"\n✅ Successfully processed: {len(results)} files")
     return 0
 
 
