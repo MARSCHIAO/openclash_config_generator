@@ -40,19 +40,20 @@ jobs:
           
           git clone --depth=1 https://github.com/HenryChiao/mihomo_yamls.git /tmp/upstream
           
-          # 复制并保持目录结构
+          # 复制完整的目录结构（保持作者子目录）
           for dir in General_Config Smart_Mode; do
             if [ -d "/tmp/upstream/THEYAMLS/$dir" ]; then
+              # 保持完整的目录层级，包括作者子目录
               cp -r "/tmp/upstream/THEYAMLS/$dir" raw_configs/external/
-              echo "✅ Copied: $dir"
+              echo "✅ Copied: $dir (with subdirectories)"
             else
               echo "⚠️  Directory not found: $dir"
             fi
           done
           
-          # 显示结构
+          # 显示完整结构（包括子目录）
           echo "📁 External structure:"
-          find raw_configs/external -type d
+          tree -L 3 raw_configs/external/ || find raw_configs/external -type d | head -20
       
       - name: Validate External Configs
         run: |
@@ -111,8 +112,10 @@ jobs:
       - name: Process Local Configs
         if: steps.check_local.outputs.has_local == 'true'
         run: |
-          mkdir -p raw_configs/local processed_configs/local
-          cp -r cleaner_config/* raw_configs/local/
+          mkdir -p raw_configs/local/cleaner_config processed_configs/local/cleaner_config
+          
+          # 复制本地配置到中间目录，保持 cleaner_config 目录名
+          cp -r cleaner_config/* raw_configs/local/cleaner_config/
           
           # 处理
           if [ -f "src/yaml_processor.py" ]; then
@@ -124,13 +127,22 @@ jobs:
             cp -r raw_configs/local/* processed_configs/local/
           fi
           
-          # 生成覆写
+          # 生成覆写（输出会自动创建 overwrite/cleaner_config）
           python src/overwrite_generator.py \
             --input processed_configs/local \
             --output overwrite \
             --repo-url "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}" \
             --source local \
             --verbose
+          
+          # 验证输出目录
+          if [ -d "overwrite/cleaner_config" ]; then
+            conf_count=$(find overwrite/cleaner_config -name "*.conf" | wc -l)
+            echo "✅ cleaner_config directory created with $conf_count files"
+          else
+            echo "❌ cleaner_config directory not created!"
+            exit 1
+          fi
       
       # ========== 生成总 README ==========
       - name: Generate Main README
@@ -138,45 +150,66 @@ jobs:
           cat > overwrite/README.md << 'EOF'
           # OpenClash 覆写配置库
           
-          本目录按来源分类存放自动生成的覆写配置文件。
+          本目录按来源和作者分类存放自动生成的覆写配置文件。
           
           ## 📂 目录结构
           
           ```
           overwrite/
-          ├── General_Config/     # 来自 HenryChiao 通用配置
-          │   ├── README.md       # 该分类说明
-          │   └── Overwrite-*.conf  # 9种配置变体
-          ├── Smart_Mode/         # 来自 HenryChiao Smart 配置
-          │   ├── README.md
-          │   └── Overwrite-*.conf
-          └── cleaner_config/     # 来自本地自定义配置
+          ├── General_Config/          # 通用配置
+          │   ├── Author1/             # 作者1的配置
+          │   │   ├── README.md
+          │   │   └── Overwrite-*.conf (9 variants)
+          │   ├── Author2/             # 作者2的配置
+          │   │   ├── README.md
+          │   │   └── Overwrite-*.conf (9 variants)
+          │   └── ...
+          ├── Smart_Mode/              # Smart 智能模式
+          │   ├── Author1/
+          │   │   ├── README.md
+          │   │   └── Overwrite-*.conf (9 variants)
+          │   ├── Author2/
+          │   │   ├── README.md
+          │   │   └── Overwrite-*.conf (9 variants)
+          │   └── ...
+          └── cleaner_config/          # 本地自定义配置
               ├── README.md
-              └── Overwrite-*.conf
+              └── Overwrite-*.conf (9 variants)
           ```
           
           ## 🚀 快速使用
           
-          1. 进入对应来源目录
-          2. 查看该目录的 README.md 了解配置详情
-          3. 选择适合的配置变体（标准/Smart/旁路由/LGBM/IPv6）
-          4. 在 OpenClash 中应用并设置环境变量
+          1. **选择配置类型**
+             - `General_Config/` - 通用配置，适合日常使用
+             - `Smart_Mode/` - 智能模式，自动选择最优节点
+             - `cleaner_config/` - 本地自定义配置
+          
+          2. **选择作者/维护者**
+             - 进入对应的作者子目录
+             - 查看该目录的 README.md 了解配置详情
+          
+          3. **选择配置变体**
+             - 根据你的网络环境选择合适的变体（标准/Smart/旁路由/LGBM/IPv6）
+          
+          4. **应用配置**
+             - 在 OpenClash 中添加覆写配置
+             - 设置必要的环境变量
           
           ## 📝 配置变体说明
           
-          每个原始 YAML 生成 9 种配置：
+          每个原始 YAML 生成 9 种配置变体：
           
-          | 后缀 | 模式 | IPv6 | LGBM | 特殊要求 |
-          |------|------|------|------|----------|
-          | 无 | 标准 | ✅ | ❌ | 无 |
-          | `-noipv6` | 标准 | ❌ | ❌ | 无 |
-          | `-bypass` | 标准 | ❌ | ❌ | **需 EN_DNS** |
-          | `-smart` | Smart | ✅ | ❌ | 无 |
-          | `-smart-noipv6` | Smart | ❌ | ❌ | 无 |
-          | `-smart-LGBM` | Smart | ✅ | ✅ | 无 |
-          | `-smart-noipv6-LGBM` | Smart | ❌ | ✅ | 无 |
-          | `-smart-bypass` | Smart | ❌ | ❌ | **需 EN_DNS** |
-          | `-smart-bypass-LGBM` | Smart | ❌ | ✅ | **需 EN_DNS** |
+          | 后缀 | 模式 | IPv6 | LGBM | 特殊要求 | 典型使用场景 |
+          |------|------|------|------|----------|-------------|
+          | 无 | 标准 | ✅ | ❌ | 无 | 主路由，支持 IPv6 |
+          | `-noipv6` | 标准 | ❌ | ❌ | 无 | 主路由，纯 IPv4 网络 |
+          | `-bypass` | 标准 | ❌ | ❌ | **需 EN_DNS** | **旁路由模式** |
+          | `-smart` | Smart | ✅ | ❌ | 无 | 智能选节点，支持 IPv6 |
+          | `-smart-noipv6` | Smart | ❌ | ❌ | 无 | 智能选节点，纯 IPv4 |
+          | `-smart-LGBM` | Smart | ✅ | ✅ | 无 | 智能 + AI 优化 |
+          | `-smart-noipv6-LGBM` | Smart | ❌ | ✅ | 无 | 智能 + AI，纯 IPv4 |
+          | `-smart-bypass` | Smart | ❌ | ❌ | **需 EN_DNS** | **智能旁路由** |
+          | `-smart-bypass-LGBM` | Smart | ❌ | ✅ | **需 EN_DNS** | **智能旁路由 + AI** |
           
           ## 🔧 环境变量设置
           
@@ -209,6 +242,7 @@ jobs:
           
           - **外部配置**: 每日 06:00 UTC 自动同步 HenryChiao 仓库
           - **本地配置**: 推送到 `cleaner_config/` 时自动重新生成
+          - **结构保持**: 完整保留原始仓库的目录结构和分类
           
           ## 📊 构建信息
           
@@ -266,14 +300,28 @@ jobs:
           
           echo "### 📊 Statistics" >> $GITHUB_STEP_SUMMARY
           conf_count=$(find overwrite -name "*.conf" 2>/dev/null | wc -l)
+          readme_count=$(find overwrite -name "README.md" 2>/dev/null | wc -l)
           echo "- **Generated Configs**: $conf_count" >> $GITHUB_STEP_SUMMARY
-          echo "- **Categories**: $(find overwrite -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l)" >> $GITHUB_STEP_SUMMARY
+          echo "- **README Files**: $readme_count" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Categories**: $(find overwrite -mindepth 1 -type d 2>/dev/null | wc -l)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          echo "### 📁 Directory Structure" >> $GITHUB_STEP_SUMMARY
+          echo "### 📁 Directory Structure (3 levels)" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
-          tree -L 2 overwrite/ 2>/dev/null || find overwrite -maxdepth 2 -type d
+          tree -L 3 overwrite/ 2>/dev/null || find overwrite -maxdepth 3 -type d | sort
           echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### 📋 Category Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          for category in overwrite/*/; do
+            if [ -d "$category" ]; then
+              cat_name=$(basename "$category")
+              sub_count=$(find "$category" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l)
+              conf_in_cat=$(find "$category" -name "*.conf" 2>/dev/null | wc -l)
+              echo "- **$cat_name**: $sub_count subcategories, $conf_in_cat configs" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
           echo "" >> $GITHUB_STEP_SUMMARY
           
           echo "### 🔗 Quick Links" >> $GITHUB_STEP_SUMMARY
