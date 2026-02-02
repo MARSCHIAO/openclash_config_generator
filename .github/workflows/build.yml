@@ -1,13 +1,15 @@
-name: Build OpenClash Configs
+name: Build OpenClash Overwrites
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'  # 每天6点自动更新
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
-      - 'src/**'
+      - 'cleaner_config/**'
       - 'templates/**'
+      - 'src/**'
       - '.github/workflows/**'
 
 permissions:
@@ -16,152 +18,99 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
-          set -e
-          python -m pip install --upgrade pip
-          pip install PyYAML Jinja2
+          pip install pyyaml jinja2
 
-      - name: Sync upstream configs
+      - name: Fetch External Configs
         run: |
-          set -e
-          git clone --depth=1 https://github.com/HenryChiao/mihomo_yamls.git upstream
-
-          mkdir -p raw_configs
-          cp upstream/General_Config/*.yaml raw_configs/ 2>/dev/null || true
-          cp upstream/Smart_Mode/*.yaml raw_configs/ 2>/dev/null || true
-
-          echo "📦 Found $(ls raw_configs/*.yaml 2>/dev/null | wc -l) YAML files"
-
-      - name: Strip YAML configs
-        run: |
-          set -e
-          python src/yaml_stripper.py raw_configs processed_configs --verbose
-          echo "✅ Stripped $(ls processed_configs/*.yaml 2>/dev/null | wc -l) configs"
-
-      - name: Generate .conf files
-        run: |
-          set -e
-          python src/conf_generator.py \
-            processed_configs \
-            output \
-            --templates templates \
-            --types main_router bypass_router smart \
-            --verbose
-
-          echo "✅ Generated $(ls output/*.conf 2>/dev/null | wc -l) .conf files"
-
-      - name: Generate README for configs
-        run: |
-          set -e
-          cat > output/README.md << 'EOF'
-          # OpenClash 覆写配置文件
-
-          自动生成于: $(date +'%Y-%m-%d %H:%M:%S UTC')
-
-          ## 📋 配置文件列表
-          EOF
-
-          for conf in output/*.conf; do
-            filename=$(basename "$conf")
-            echo "- [$filename]($filename)" >> output/README.md
+          mkdir -p raw_configs/external
+          git clone --depth=1 https://github.com/HenryChiao/mihomo_yamls.git /tmp/upstream
+          
+          # 复制 General_Config 和 Smart_Mode
+          for dir in General_Config Smart_Mode; do
+            if [ -d "/tmp/upstream/THEYAMLS/$dir" ]; then
+              cp -r "/tmp/upstream/THEYAMLS/$dir" raw_configs/external/
+              echo "📥 已复制: $dir"
+            fi
           done
 
-          cat >> output/README.md << 'EOF'
-
-          ## 🚀 使用方法
-
-          ### 1. 添加覆写模块
-          在 OpenClash 中添加覆写模块，使用以下格式的 URL:
-
-          ```
-          https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/output/文件名.conf
-          ```
-
-          ### 2. 配置环境变量
-          - 单订阅: EN_KEY=机场订阅链接
-          - 多订阅: EN_KEY1=订阅1;EN_KEY2=订阅2;...
-          - 旁路由: 额外需要 EN_DNS=DNS服务器地址
-
-          ### 3. 应用配置
-          保存并重启 OpenClash。
-
-          ## 📝 配置类型说明
-          | 后缀 | 说明 |
-          |------|------|
-          | (无) | 主路由标准配置 |
-          | -bypass_router | 旁路由配置 |
-          | -smart | Smart 智能模式 |
-
-          ## ⚠️ 注意事项
-          1. 所有配置会自动下载对应的精简 YAML
-          2. 精简后的 YAML 只包含 providers 与 rules
-          3. 根据 provider 数量自动生成环境变量要求
-
-          EOF
-
-      - name: Generate file checksums
+      - name: Copy Local Configs
         run: |
-          set -e
-          cd output
-          if ls *.conf >/dev/null 2>&1; then
-            sha256sum *.conf > SHA256SUMS
-          else
-            echo "No .conf files found" > SHA256SUMS
+          mkdir -p raw_configs/local
+          if [ -d "cleaner_config" ]; then
+            cp -r cleaner_config/* raw_configs/local/ 2>/dev/null || true
+            echo "📂 已复制本地配置"
           fi
-          cd ..
 
-      - name: Debug SHA256SUMS
+      - name: Strip YAML Configs
         run: |
-          ls -l output/SHA256SUMS
-          cat output/SHA256SUMS
+          mkdir -p processed_configs/external processed_configs/local
+          
+          python src/yaml_stripper.py \
+            --input raw_configs/external \
+            --output processed_configs/external \
+            --recursive
+            
+          python src/yaml_stripper.py \
+            --input raw_configs/local \
+            --output processed_configs/local \
+            --recursive
 
-      - name: Get current date
-        id: date
-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+      - name: Generate Overwrite Files
+        run: |
+          mkdir -p output/overwrites
+          
+          REPO_URL="https://raw.githubusercontent.com/${{ github.repository }}/main"
+          
+          # 生成外部配置覆写
+          python src/overwrite_generator.py \
+            --input processed_configs/external \
+            --output output/overwrites \
+            --types main bypass smart \
+            --repo-url "$REPO_URL" \
+            --source external \
+            -v
+          
+          # 生成本地配置覆写
+          python src/overwrite_generator.py \
+            --input processed_configs/local \
+            --output output/overwrites \
+            --types main bypass smart \
+            --repo-url "$REPO_URL" \
+            --source local \
+            -v
 
-      - name: Create/Update Release
+      - name: Generate Documentation
+        run: |
+          python src/generate_index.py --output output/
+
+      - name: Commit and Release
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add processed_configs/ output/
+          git diff --staged --quiet || git commit -m "🤖 Auto-build: $(date +'%Y-%m-%d %H:%M')"
+          git push
+
+      - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ steps.date.outputs.date }}
-          name: Release ${{ steps.date.outputs.date }}
-          body: |
-            ## 📦 OpenClash 覆写配置文件
-            **生成时间**: ${{ steps.date.outputs.date }}
-
-            ### 📁 包含内容
-            - 精简后的 YAML (`processed_configs/`)
-            - OpenClash 覆写文件 (`output/`)
-            - SHA256SUMS 校验文件
-
-            ### 📊 统计
-            - YAML 数量: $(ls processed_configs/*.yaml 2>/dev/null | wc -l)
-            - .conf 数量: $(ls output/*.conf 2>/dev/null | wc -l)
-
+          tag_name: v$(date +'%Y%m%d-%H%M%S')
+          name: OpenClash Overwrites $(date +'%Y-%m-%d')
+          body_path: output/RELEASE_NOTES.md
           files: |
-            output/*.conf
-            output/SHA256SUMS
-            output/README.md
-
+            output/overwrites/*.conf
+            output/overwrites/SHA256SUMS
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Commit changes
-        run: |
-          set -e
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-
-          git add processed_configs/ output/
-          git commit -m "🤖 Auto-build: ${{ steps.date.outputs.date }}" || echo "No changes to commit"
-          git push
