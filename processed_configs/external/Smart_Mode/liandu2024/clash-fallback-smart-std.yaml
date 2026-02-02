@@ -1,253 +1,6 @@
 # Processed: raw_configs/external/Smart_Mode/liandu2024/clash-fallback-smart-std.yaml
 # Providers: 1 proxy, 41 rule
 
-rule-providers:
-  TEST / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list
-  ChatGPT / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/openai.mrs
-  Claude / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list
-  Meta AI / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list
-  Perplexity / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/perplexity.mrs
-  Copilot / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Copilot.list
-  Gemini / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Gemini.list
-  GitHub / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/github.mrs
-  Amazon / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/amazon.mrs
-  Apple-CN / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple-cn.mrs
-  Apple / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple.mrs
-  Microsoft / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/microsoft.mrs
-  OKX / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/okx.mrs
-  Bybit / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/bybit.mrs
-  Binance / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/binance.mrs
-  TikTok / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/tiktok.mrs
-  Netflix / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/netflix.mrs
-  Netflix / IP:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geoip/netflix.mrs
-  Disney / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/disney.mrs
-  HBO / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/hbo.mrs
-  Spotify / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/spotify.mrs
-  Steam / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam.mrs
-  Epic / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.list
-  EA / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EA/EA.list
-  Blizzard / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.list
-  UBI / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UBI/UBI.list
-  PlayStation / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/PlayStation/PlayStation.list
-  Nintend / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.list
-  Proxy / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Proxy.list
-  Globe / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Global/Global.list
-  Block / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Block.list
-  Nvidia / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Nvidia/Nvidia.list
-  Crunchyroll / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Crunchyroll.list
-  Reddit / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/reddit.mrs
-  Groq / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/groq.mrs
-  Grok / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Grok.list
-  Popcorn / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Popcorn.list
-  Direct / Domain:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Direct.list
-  Private / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/private.mrs
-  China / Domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cn.mrs
-  China / IP:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
-    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geoip/cn.mrs
 proxy-groups:
 - type: select
   proxies: &id001
@@ -531,3 +284,250 @@ rules:
 - RULE-SET,China / IP,国内,no-resolve
 - RULE-SET,Private / Domain,国内
 - MATCH,其他
+rule-providers:
+  TEST / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list
+  ChatGPT / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/openai.mrs
+  Claude / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list
+  Meta AI / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list
+  Perplexity / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/perplexity.mrs
+  Copilot / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Copilot.list
+  Gemini / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Gemini.list
+  GitHub / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/github.mrs
+  Amazon / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/amazon.mrs
+  Apple-CN / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple-cn.mrs
+  Apple / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple.mrs
+  Microsoft / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/microsoft.mrs
+  OKX / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/okx.mrs
+  Bybit / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/bybit.mrs
+  Binance / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/binance.mrs
+  TikTok / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/tiktok.mrs
+  Netflix / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/netflix.mrs
+  Netflix / IP:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geoip/netflix.mrs
+  Disney / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/disney.mrs
+  HBO / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/hbo.mrs
+  Spotify / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/spotify.mrs
+  Steam / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam.mrs
+  Epic / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.list
+  EA / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EA/EA.list
+  Blizzard / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.list
+  UBI / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UBI/UBI.list
+  PlayStation / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/PlayStation/PlayStation.list
+  Nintend / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.list
+  Proxy / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Proxy.list
+  Globe / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Global/Global.list
+  Block / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Block.list
+  Nvidia / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Nvidia/Nvidia.list
+  Crunchyroll / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Crunchyroll.list
+  Reddit / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/reddit.mrs
+  Groq / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/groq.mrs
+  Grok / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Grok.list
+  Popcorn / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Popcorn.list
+  Direct / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://gh-proxy.com/raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Direct.list
+  Private / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/private.mrs
+  China / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cn.mrs
+  China / IP:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geoip/cn.mrs

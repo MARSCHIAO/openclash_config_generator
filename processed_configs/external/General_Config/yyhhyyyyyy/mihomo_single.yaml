@@ -1,215 +1,6 @@
 # Processed: raw_configs/external/General_Config/yyhhyyyyyy/mihomo_single.yaml
 # Providers: 1 proxy, 26 rule
 
-rule-providers:
-  reject_non_ip_no_drop:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/reject-no-drop.txt
-    path: ./rule_set/sukkaw_ruleset/reject_non_ip_no_drop.txt
-  reject_non_ip_drop:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/reject-drop.txt
-    path: ./rule_set/sukkaw_ruleset/reject_non_ip_drop.txt
-  reject_non_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/reject.txt
-    path: ./rule_set/sukkaw_ruleset/reject_non_ip.txt
-  reject_domainset:
-    type: http
-    behavior: domain
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/domainset/reject.txt
-    path: ./rule_set/sukkaw_ruleset/reject_domainset.txt
-  reject_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/ip/reject.txt
-    path: ./rule_set/sukkaw_ruleset/reject_ip.txt
-  cdn_domainset:
-    type: http
-    behavior: domain
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/domainset/cdn.txt
-    path: ./rule_set/sukkaw_ruleset/cdn_domainset.txt
-  cdn_non_ip:
-    type: http
-    behavior: domain
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/cdn.txt
-    path: ./rule_set/sukkaw_ruleset/cdn_non_ip.txt
-  stream_non_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/stream.txt
-    path: ./rule_set/sukkaw_ruleset/stream_non_ip.txt
-  stream_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/ip/stream.txt
-    path: ./rule_set/sukkaw_ruleset/stream_ip.txt
-  ai_non_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/ai.txt
-    path: ./rule_set/sukkaw_ruleset/ai_non_ip.txt
-  telegram_non_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/telegram.txt
-    path: ./rule_set/sukkaw_ruleset/telegram_non_ip.txt
-  telegram_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/ip/telegram.txt
-    path: ./rule_set/sukkaw_ruleset/telegram_ip.txt
-  apple_cdn:
-    type: http
-    behavior: domain
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/domainset/apple_cdn.txt
-    path: ./rule_set/sukkaw_ruleset/apple_cdn.txt
-  apple_services:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/apple_services.txt
-    path: ./rule_set/sukkaw_ruleset/apple_services.txt
-  apple_cn_non_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/apple_cn.txt
-    path: ./rule_set/sukkaw_ruleset/apple_cn_non_ip.txt
-  microsoft_cdn_non_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/microsoft_cdn.txt
-    path: ./rule_set/sukkaw_ruleset/microsoft_cdn_non_ip.txt
-  microsoft_non_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/microsoft.txt
-    path: ./rule_set/sukkaw_ruleset/microsoft_non_ip.txt
-  download_domainset:
-    type: http
-    behavior: domain
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/domainset/download.txt
-    path: ./rule_set/sukkaw_ruleset/download_domainset.txt
-  download_non_ip:
-    type: http
-    behavior: domain
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/download.txt
-    path: ./rule_set/sukkaw_ruleset/download_non_ip.txt
-  lan_non_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/lan.txt
-    path: ./rule_set/sukkaw_ruleset/lan_non_ip.txt
-  lan_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/ip/lan.txt
-    path: ./rule_set/sukkaw_ruleset/lan_ip.txt
-  domestic_non_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/domestic.txt
-    path: ./rule_set/sukkaw_ruleset/domestic_non_ip.txt
-  direct_non_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/direct.txt
-    path: ./rule_set/sukkaw_ruleset/direct_non_ip.txt
-  global_non_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/non_ip/global.txt
-    path: ./rule_set/sukkaw_ruleset/global_non_ip.txt
-  domestic_ip:
-    type: http
-    behavior: classical
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/ip/domestic.txt
-    path: ./rule_set/sukkaw_ruleset/domestic_ip.txt
-  china_ip:
-    type: http
-    behavior: ipcidr
-    interval: 43200
-    format: text
-    proxy: 🎯 节点选择
-    url: https://ruleset.skk.moe/Clash/ip/china_ip.txt
-    path: ./rule_set/sukkaw_ruleset/china_ip.txt
 proxy-groups:
 - name: 🎯 节点选择
   type: select
@@ -783,3 +574,212 @@ rules:
 - RULE-SET,domestic_ip,DIRECT
 - RULE-SET,china_ip,DIRECT
 - MATCH,🎯 节点选择
+rule-providers:
+  reject_non_ip_no_drop:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/reject-no-drop.txt
+    path: ./rule_set/sukkaw_ruleset/reject_non_ip_no_drop.txt
+  reject_non_ip_drop:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/reject-drop.txt
+    path: ./rule_set/sukkaw_ruleset/reject_non_ip_drop.txt
+  reject_non_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/reject.txt
+    path: ./rule_set/sukkaw_ruleset/reject_non_ip.txt
+  reject_domainset:
+    type: http
+    behavior: domain
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/domainset/reject.txt
+    path: ./rule_set/sukkaw_ruleset/reject_domainset.txt
+  reject_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/ip/reject.txt
+    path: ./rule_set/sukkaw_ruleset/reject_ip.txt
+  cdn_domainset:
+    type: http
+    behavior: domain
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/domainset/cdn.txt
+    path: ./rule_set/sukkaw_ruleset/cdn_domainset.txt
+  cdn_non_ip:
+    type: http
+    behavior: domain
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/cdn.txt
+    path: ./rule_set/sukkaw_ruleset/cdn_non_ip.txt
+  stream_non_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/stream.txt
+    path: ./rule_set/sukkaw_ruleset/stream_non_ip.txt
+  stream_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/ip/stream.txt
+    path: ./rule_set/sukkaw_ruleset/stream_ip.txt
+  ai_non_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/ai.txt
+    path: ./rule_set/sukkaw_ruleset/ai_non_ip.txt
+  telegram_non_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/telegram.txt
+    path: ./rule_set/sukkaw_ruleset/telegram_non_ip.txt
+  telegram_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/ip/telegram.txt
+    path: ./rule_set/sukkaw_ruleset/telegram_ip.txt
+  apple_cdn:
+    type: http
+    behavior: domain
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/domainset/apple_cdn.txt
+    path: ./rule_set/sukkaw_ruleset/apple_cdn.txt
+  apple_services:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/apple_services.txt
+    path: ./rule_set/sukkaw_ruleset/apple_services.txt
+  apple_cn_non_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/apple_cn.txt
+    path: ./rule_set/sukkaw_ruleset/apple_cn_non_ip.txt
+  microsoft_cdn_non_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/microsoft_cdn.txt
+    path: ./rule_set/sukkaw_ruleset/microsoft_cdn_non_ip.txt
+  microsoft_non_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/microsoft.txt
+    path: ./rule_set/sukkaw_ruleset/microsoft_non_ip.txt
+  download_domainset:
+    type: http
+    behavior: domain
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/domainset/download.txt
+    path: ./rule_set/sukkaw_ruleset/download_domainset.txt
+  download_non_ip:
+    type: http
+    behavior: domain
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/download.txt
+    path: ./rule_set/sukkaw_ruleset/download_non_ip.txt
+  lan_non_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/lan.txt
+    path: ./rule_set/sukkaw_ruleset/lan_non_ip.txt
+  lan_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/ip/lan.txt
+    path: ./rule_set/sukkaw_ruleset/lan_ip.txt
+  domestic_non_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/domestic.txt
+    path: ./rule_set/sukkaw_ruleset/domestic_non_ip.txt
+  direct_non_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/direct.txt
+    path: ./rule_set/sukkaw_ruleset/direct_non_ip.txt
+  global_non_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/non_ip/global.txt
+    path: ./rule_set/sukkaw_ruleset/global_non_ip.txt
+  domestic_ip:
+    type: http
+    behavior: classical
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/ip/domestic.txt
+    path: ./rule_set/sukkaw_ruleset/domestic_ip.txt
+  china_ip:
+    type: http
+    behavior: ipcidr
+    interval: 43200
+    format: text
+    proxy: 🎯 节点选择
+    url: https://ruleset.skk.moe/Clash/ip/china_ip.txt
+    path: ./rule_set/sukkaw_ruleset/china_ip.txt

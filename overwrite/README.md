@@ -74,7 +74,7 @@ EN_DNS=223.5.5.5,114.114.114.114
 
 ## 📊 构建信息
 
-- 最后更新: 2026-02-02 14:05:22 UTC
+- 最后更新: 2026-02-02 14:15:13 UTC
 - 仓库: https://github.com/MARSCHIAO/openclash_config_generator
 - 分支: main
 

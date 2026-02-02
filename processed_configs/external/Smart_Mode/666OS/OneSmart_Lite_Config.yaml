@@ -1,121 +1,6 @@
 # Processed: raw_configs/external/Smart_Mode/666OS/OneSmart_Lite_Config.yaml
 # Providers: 2 proxy, 19 rule
 
-rule-providers:
-  Private:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
-  Direct:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Direct.mrs
-  AI:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/AI.mrs
-  Telegram:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
-  SocialMedia:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
-  XPTV:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/XPTV.mrs
-  Emby:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
-  Streaming:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
-  Proxy:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Proxy.mrs
-  China:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
-  PrivateIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
-  AIIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
-  TelegramIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
-  SocialMediaIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
-  XPTVIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/XPTV.mrs
-  EmbyIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
-  StreamingIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
-  ProxyIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Proxy.mrs
-  ChinaIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
 proxy-groups:
 - type: select
   proxies:
@@ -306,3 +191,118 @@ rules:
 - RULE-SET,ProxyIP,国外流量,no-resolve
 - RULE-SET,ChinaIP,国内流量
 - MATCH,兜底流量
+rule-providers:
+  Private:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
+  Direct:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Direct.mrs
+  AI:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/AI.mrs
+  Telegram:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
+  SocialMedia:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
+  XPTV:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/XPTV.mrs
+  Emby:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
+  Streaming:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
+  Proxy:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Proxy.mrs
+  China:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
+  PrivateIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
+  AIIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
+  TelegramIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
+  SocialMediaIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
+  XPTVIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/XPTV.mrs
+  EmbyIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
+  StreamingIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
+  ProxyIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Proxy.mrs
+  ChinaIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs

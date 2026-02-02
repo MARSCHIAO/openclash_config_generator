@@ -1,217 +1,6 @@
 # Processed: raw_configs/external/General_Config/Mitchell/config.yaml
 # Providers: 4 proxy, 30 rule
 
-rule-providers:
-  AWAvenue_Ads_Rule:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: yaml
-    path: ./ruleset/AWAvenue_Ads_Rule_Clash.yaml
-    url: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main//Filters/AWAvenue-Ads-Rule-Clash.yaml
-  blackmatrix7_ad:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: yaml
-    path: ./ruleset/blackmatrix7_ad.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising.yaml
-  porn:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/category-porn.mrs
-    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-porn.mrs
-  fake_ip_filter_DustinWin:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/fake_ip_filter_DustinWin.mrs
-    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs
-  fake_ip_filter_juewuy:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    path: ./ruleset/fake_ip_filter_juewuy.list
-    url: https://github.com/juewuy/ShellCrash/blob/dev/public/fake_ip_filter.list
-  blackmatrix7_direct:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: yaml
-    path: ./ruleset/blackmatrix7_direct.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml
-  private_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/private_domain.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
-  cn_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/cn_domain.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs
-  cn_ip:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
-    path: ./ruleset/cn_ip.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
-  trackerslist:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/trackerslist.mrs
-    url: https://github.com/DustinWin/ruleset_geodata/raw/refs/heads/mihomo-ruleset/trackerslist.mrs
-  proxy:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/proxy.mrs
-    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.mrs
-  gfw_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/gfw_domain.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs
-  geolocation-!cn:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/geolocation-!cn.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs
-  ai:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/ai
-    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs
-  cloudflare:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/cloudflare.mrs
-    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cloudflare.mrs
-  geoip_cloudflare:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
-    path: ./ruleset/geoip_cloudflare.mrs
-    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/cloudflare.mrs
-  youtube_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/youtube_domain.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs
-  tiktok_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/tiktok_domain.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs
-  netflix_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/netflix_domain.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/netflix.mrs
-  disney_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/disney_domain.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/disney.mrs
-  geoip_netflix:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
-    path: ./ruleset/geoip_netflix.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs
-  geoip_twitter:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
-    path: ./ruleset/geoip_twitter.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs
-  geoip_facebook:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
-    path: ./ruleset/geoip_facebook.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/facebook.mrs
-  telegram_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: yaml
-    path: ./ruleset/telegram_domain.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
-  telegram_ip:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
-    path: ./ruleset/telegram_ip.mrs
-    url: https://github.com/DustinWin/ruleset_geodata/raw/refs/heads/mihomo-ruleset/telegramip.mrs
-  Telegram_No_Resolve:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: yaml
-    path: ./ruleset/Telegram_No_Resolve.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram_No_Resolve.yaml
-  apple_cn_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/apple_cn_domain.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs
-  onedrive_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/onedrive_domain.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs
-  speedtest_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    path: ./ruleset/speedtest_domain.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ookla-speedtest.mrs
-  geoip_cloudfront:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
-    path: ./ruleset/geoip_cloudfront.mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cloudfront.mrs
 proxy-groups:
 - name: Proxy
   type: select
@@ -548,3 +337,214 @@ rules:
 - RULE-SET,proxy,Proxy
 - RULE-SET,trackerslist,Trackerslist
 - MATCH,漏网之鱼
+rule-providers:
+  AWAvenue_Ads_Rule:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: yaml
+    path: ./ruleset/AWAvenue_Ads_Rule_Clash.yaml
+    url: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main//Filters/AWAvenue-Ads-Rule-Clash.yaml
+  blackmatrix7_ad:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: yaml
+    path: ./ruleset/blackmatrix7_ad.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising.yaml
+  porn:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/category-porn.mrs
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-porn.mrs
+  fake_ip_filter_DustinWin:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/fake_ip_filter_DustinWin.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs
+  fake_ip_filter_juewuy:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    path: ./ruleset/fake_ip_filter_juewuy.list
+    url: https://github.com/juewuy/ShellCrash/blob/dev/public/fake_ip_filter.list
+  blackmatrix7_direct:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: yaml
+    path: ./ruleset/blackmatrix7_direct.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml
+  private_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/private_domain.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
+  cn_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/cn_domain.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs
+  cn_ip:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/cn_ip.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
+  trackerslist:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/trackerslist.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/raw/refs/heads/mihomo-ruleset/trackerslist.mrs
+  proxy:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/proxy.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.mrs
+  gfw_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/gfw_domain.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs
+  geolocation-!cn:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/geolocation-!cn.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs
+  ai:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/ai
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs
+  cloudflare:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/cloudflare.mrs
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cloudflare.mrs
+  geoip_cloudflare:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/geoip_cloudflare.mrs
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/cloudflare.mrs
+  youtube_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/youtube_domain.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs
+  tiktok_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/tiktok_domain.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs
+  netflix_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/netflix_domain.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/netflix.mrs
+  disney_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/disney_domain.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/disney.mrs
+  geoip_netflix:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/geoip_netflix.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs
+  geoip_twitter:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/geoip_twitter.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs
+  geoip_facebook:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/geoip_facebook.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/facebook.mrs
+  telegram_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: yaml
+    path: ./ruleset/telegram_domain.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
+  telegram_ip:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/telegram_ip.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/raw/refs/heads/mihomo-ruleset/telegramip.mrs
+  Telegram_No_Resolve:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: yaml
+    path: ./ruleset/Telegram_No_Resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram_No_Resolve.yaml
+  apple_cn_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/apple_cn_domain.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs
+  onedrive_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/onedrive_domain.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs
+  speedtest_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./ruleset/speedtest_domain.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ookla-speedtest.mrs
+  geoip_cloudfront:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/geoip_cloudfront.mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cloudfront.mrs
