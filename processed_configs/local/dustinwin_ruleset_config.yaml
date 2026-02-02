@@ -1,0 +1,301 @@
+# Processed: raw_configs/local/dustinwin_ruleset_config.yaml
+# Providers: 2 proxy, 14 rule
+
+proxy-providers:
+  🛫 机场订阅:
+    type: http
+    url: https://example.com/xxx/xxx&flag=clash
+    path: ./proxies/airport.yaml
+    interval: 86400
+    filter: (?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united
+      states)
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 600
+  🆓 免费订阅:
+    type: http
+    url: https://example.com/xxx/xxx&flag=clash
+    path: ./proxies/free.yaml
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 600
+rule-providers:
+  ads:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/ads.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ads.mrs
+    interval: 86400
+  private:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/private.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs
+    interval: 86400
+  trackerslist:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/trackerslist.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs
+    interval: 86400
+  microsoft-cn:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/microsoft-cn.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/microsoft-cn.mrs
+    interval: 86400
+  apple-cn:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/apple-cn.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/apple-cn.mrs
+    interval: 86400
+  google-cn:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/google-cn.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/google-cn.mrs
+    interval: 86400
+  games-cn:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/games-cn.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games-cn.mrs
+    interval: 86400
+  ai:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/ai.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs
+    interval: 86400
+  networktest:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/networktest.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/networktest.mrs
+    interval: 86400
+  proxy:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/proxy.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.mrs
+    interval: 86400
+  cn:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/cn.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs
+    interval: 86400
+  privateip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/privateip.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/privateip.mrs
+    interval: 86400
+  cnip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/cnip.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cnip.mrs
+    interval: 86400
+  telegramip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/telegramip.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.mrs
+    interval: 86400
+rules:
+- RULE-SET,private,私有网络
+- RULE-SET,trackerslist,Trackerslist
+- RULE-SET,microsoft-cn,微软服务
+- RULE-SET,apple-cn,苹果服务
+- RULE-SET,google-cn,谷歌服务
+- RULE-SET,games-cn,游戏服务
+- RULE-SET,ai,AI 平台
+- RULE-SET,networktest,网络测试
+- RULE-SET,proxy,代理域名
+- RULE-SET,cn,直连域名
+- RULE-SET,privateip,私有网络,no-resolve
+- RULE-SET,cnip,直连 IP
+- RULE-SET,telegramip,电报消息,no-resolve
+- MATCH,漏网之鱼
+proxy-groups:
+- name: 节点选择
+  type: select
+  proxies:
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 新加坡节点
+  - 美国节点
+  - 免费节点
+  - 🆚 vless 节点
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/proxy.png
+- name: 网络测试
+  type: select
+  proxies:
+  - 全球直连
+  - 节点选择
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 新加坡节点
+  - 美国节点
+  - 免费节点
+  - 🆚 vless 节点
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/networktest.png
+- name: AI 平台
+  type: select
+  proxies:
+  - 节点选择
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 新加坡节点
+  - 美国节点
+  - 免费节点
+  - 🆚 vless 节点
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/ai.png
+- name: Trackerslist
+  type: select
+  proxies:
+  - 全球直连
+  - 节点选择
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/trackerslist.png
+- name: 游戏服务
+  type: select
+  proxies:
+  - 全球直连
+  - 节点选择
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/games-cn.png
+- name: 微软服务
+  type: select
+  proxies:
+  - 全球直连
+  - 节点选择
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/microsoft-cn.png
+- name: 谷歌服务
+  type: select
+  proxies:
+  - 全球直连
+  - 节点选择
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/google-cn.png
+- name: 苹果服务
+  type: select
+  proxies:
+  - 全球直连
+  - 节点选择
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/apple-cn.png
+- name: 直连域名
+  type: select
+  proxies:
+  - 全球直连
+  - 节点选择
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/cn.png
+- name: 直连 IP
+  type: select
+  proxies:
+  - 全球直连
+  - 节点选择
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/cnip.png
+- name: 代理域名
+  type: select
+  proxies:
+  - 节点选择
+  - 全球直连
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/global.png
+- name: 电报消息
+  type: select
+  proxies:
+  - 节点选择
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 新加坡节点
+  - 美国节点
+  - 免费节点
+  - 🆚 vless 节点
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/telegram.png
+- name: 私有网络
+  type: select
+  proxies:
+  - 全球直连
+  hidden: true
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/private.png
+- name: 漏网之鱼
+  type: select
+  proxies:
+  - 节点选择
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 新加坡节点
+  - 美国节点
+  - 免费节点
+  - 🆚 vless 节点
+  - 全球直连
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/match.png
+- name: 全球直连
+  type: select
+  proxies:
+  - DIRECT
+  hidden: true
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/direct.png
+- name: 香港节点
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - 🛫 机场订阅
+  filter: (?i)(🇭🇰|港|hk|hongkong|hong kong)
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/hongkong.png
+- name: 台湾节点
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - 🛫 机场订阅
+  filter: (?i)(🇹🇼|台|tw|taiwan|tai wan)
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/taiwan.png
+- name: 日本节点
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - 🛫 机场订阅
+  filter: (?i)(🇯🇵|日|jp|japan)
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/japan.png
+- name: 新加坡节点
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - 🛫 机场订阅
+  filter: (?i)(🇸🇬|新|sg|singapore)
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/singapore.png
+- name: 美国节点
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - 🛫 机场订阅
+  filter: (?i)(🇺🇸|美|us|unitedstates|united states)
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/unitedstates.png
+- name: 免费节点
+  type: url-test
+  tolerance: 100
+  use:
+  - 🆓 免费订阅
+  icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/free.png

@@ -1,0 +1,326 @@
+# Processed: raw_configs/external/General_Config/666OS/OneTouch_Config.yaml
+# Providers: 2 proxy, 21 rule
+
+rule-providers:
+  Private:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
+  Direct:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Direct.mrs
+  AppleCN:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/AppleCN.mrs
+  Download:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs
+  XPTV:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/XPTV.mrs
+  AI:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/AI.mrs
+  Telegram:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
+  SocialMedia:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
+  YouTube:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/YouTube.mrs
+  Spotify:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Spotify.mrs
+  Netflix:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Netflix.mrs
+  Disney:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Disney.mrs
+  HBO:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/HBO.mrs
+  Proxy:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Proxy.mrs
+  China:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
+  TelegramIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
+  SocialMediaIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
+  NetflixIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Netflix.mrs
+  ProxyIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Proxy.mrs
+  ChinaIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
+  PrivateIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
+proxy-groups:
+- type: select
+  proxies:
+  - 故障转移
+  - 香港自动
+  - 台湾自动
+  - 日本自动
+  - 狮城自动
+  - 韩国自动
+  - 美国自动
+  - 欧洲自动
+  - 手动选择
+  - 直接连接
+  name: 一键连
+  icon: https://github.com/666OS/YYDS/raw/main/mihomo/image/mihomo.png
+- type: fallback
+  interval: 200
+  lazy: true
+  url: https://www.google.com/generate_204
+  hidden: true
+  name: 故障转移
+  proxies:
+  - 香港自动
+  - 台湾自动
+  - 狮城自动
+  - 日本自动
+  - 韩国自动
+  - 美国自动
+  - 手动选择
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
+- type: select
+  proxies:
+  - 美国自动
+  - 一键连
+  - 香港自动
+  - 台湾自动
+  - 日本自动
+  - 狮城自动
+  - 韩国自动
+  - 欧洲自动
+  - 手动选择
+  - 直接连接
+  name: 人工智能
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
+- type: select
+  proxies: &id001
+  - 一键连
+  - 香港自动
+  - 台湾自动
+  - 日本自动
+  - 狮城自动
+  - 韩国自动
+  - 美国自动
+  - 欧洲自动
+  - 手动选择
+  - 直接连接
+  name: 社交平台
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/PBS.png
+- type: select
+  proxies: *id001
+  name: 国际媒体
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/DomesticMedia.png
+- type: select
+  proxies:
+  - 直接连接
+  - 一键连
+  - 香港自动
+  - 台湾自动
+  - 日本自动
+  - 狮城自动
+  - 韩国自动
+  - 美国自动
+  - 欧洲自动
+  - 手动选择
+  name: 国内流量
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
+- name: 手动选择
+  type: select
+  include-all: true
+  filter: ^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Clubhouse.png
+- name: 直接连接
+  type: select
+  proxies:
+  - DIRECT
+  hidden: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Direct.png
+- type: url-test
+  interval: 200
+  lazy: true
+  url: https://www.google.com/generate_204
+  hidden: true
+  name: 香港自动
+  filter: ^(?=.*(?i)(港|🇭🇰|HK|Hong|HKG))(?!.*(排除1|排除2|5x)).*$
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+- type: url-test
+  interval: 200
+  lazy: true
+  url: https://www.google.com/generate_204
+  hidden: true
+  name: 台湾自动
+  filter: ^(?=.*(?i)(台|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH))(?!.*(排除1|排除2|5x)).*$
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+- type: url-test
+  interval: 200
+  lazy: true
+  url: https://www.google.com/generate_204
+  hidden: true
+  name: 日本自动
+  filter: ^(?=.*(?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK))(?!.*(排除1|排除2|5x)).*$
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+- type: url-test
+  interval: 200
+  lazy: true
+  url: https://www.google.com/generate_204
+  hidden: true
+  name: 狮城自动
+  filter: ^(?=.*(?i)(坡|🇸🇬|SG|Sing|SIN|XSP))(?!.*(排除1|排除2|5x)).*$
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+- type: url-test
+  interval: 200
+  lazy: true
+  url: https://www.google.com/generate_204
+  hidden: true
+  name: 韩国自动
+  filter: ^(?=.*(?i)(韩|🇰🇷|韓|首尔|南朝鲜|KR|KOR|Korea|South))(?!.*(排除1|排除2|5x)).*$
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Korea.png
+- type: url-test
+  interval: 200
+  lazy: true
+  url: https://www.google.com/generate_204
+  hidden: true
+  name: 美国自动
+  filter: ^(?=.*(?i)(美|🇺🇸|US|USA|SJC|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD))(?!.*(排除1|排除2|5x)).*$
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+- type: url-test
+  interval: 200
+  lazy: true
+  url: https://www.google.com/generate_204
+  hidden: true
+  name: 欧洲自动
+  filter: ^(?=.*(?i)(奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU))(?!.*(排除1|排除2|5x)).*$
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/European_Union.png
+proxy-providers:
+  优质服务商:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    health-check: &id002
+      enable: true
+      url: https://www.google.com/generate_204
+      interval: 300
+    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
+    url: 优质订阅源地址
+    override:
+      additional-prefix: '[优] '
+  备用服务商:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    health-check: *id002
+    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
+    url: 备用订阅源地址
+    override:
+      additional-prefix: '[备] '
+rules:
+- AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((GEOIP,CN)))),REJECT
+- RULE-SET,Private,直接连接
+- RULE-SET,Direct,直接连接
+- RULE-SET,AppleCN,直接连接
+- RULE-SET,Download,直接连接
+- RULE-SET,XPTV,直接连接
+- RULE-SET,AI,人工智能
+- RULE-SET,Telegram,社交平台
+- RULE-SET,SocialMedia,社交平台
+- RULE-SET,YouTube,国际媒体
+- RULE-SET,Spotify,国际媒体
+- RULE-SET,Netflix,国际媒体
+- RULE-SET,Disney,国际媒体
+- RULE-SET,HBO,国际媒体
+- RULE-SET,Proxy,一键连
+- RULE-SET,China,国内流量
+- RULE-SET,PrivateIP,直接连接,no-resolve
+- RULE-SET,TelegramIP,社交平台,no-resolve
+- RULE-SET,SocialMediaIP,社交平台,no-resolve
+- RULE-SET,NetflixIP,国际媒体,no-resolve
+- RULE-SET,ProxyIP,一键连,no-resolve
+- RULE-SET,ChinaIP,国内流量
+- MATCH,一键连
