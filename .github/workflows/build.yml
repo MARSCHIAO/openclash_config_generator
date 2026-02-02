@@ -2,12 +2,8 @@ name: Build OpenClash Configs
 
 on:
   schedule:
-    # 每天凌晨 2 点 (UTC) 自动运行
     - cron: '0 2 * * *'
-  
   workflow_dispatch:
-    # 手动触发
-  
   push:
     branches:
       - main
@@ -22,119 +18,120 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
+
       - name: Install dependencies
         run: |
+          set -e
           python -m pip install --upgrade pip
           pip install PyYAML Jinja2
-      
+
       - name: Sync upstream configs
         run: |
-          # 克隆上游仓库
+          set -e
           git clone --depth=1 https://github.com/HenryChiao/mihomo_yamls.git upstream
-          
-          # 复制 YAML 配置文件
+
           mkdir -p raw_configs
           cp upstream/General_Config/*.yaml raw_configs/ 2>/dev/null || true
           cp upstream/Smart_Mode/*.yaml raw_configs/ 2>/dev/null || true
-          
+
           echo "📦 Found $(ls raw_configs/*.yaml 2>/dev/null | wc -l) YAML files"
-      
+
       - name: Strip YAML configs
         run: |
-          # 精简 YAML 文件
+          set -e
           python src/yaml_stripper.py raw_configs processed_configs --verbose
-          
           echo "✅ Stripped $(ls processed_configs/*.yaml 2>/dev/null | wc -l) configs"
-      
+
       - name: Generate .conf files
         run: |
-          # 生成 .conf 配置文件
+          set -e
           python src/conf_generator.py \
             processed_configs \
             output \
             --templates templates \
             --types main_router bypass_router smart \
             --verbose
-          
+
           echo "✅ Generated $(ls output/*.conf 2>/dev/null | wc -l) .conf files"
-      
+
       - name: Generate README for configs
         run: |
+          set -e
           cat > output/README.md << 'EOF'
           # OpenClash 覆写配置文件
-          
+
           自动生成于: $(date +'%Y-%m-%d %H:%M:%S UTC')
-          
+
           ## 📋 配置文件列表
-          
           EOF
-          
-          # 列出所有 .conf 文件
+
           for conf in output/*.conf; do
             filename=$(basename "$conf")
             echo "- [$filename]($filename)" >> output/README.md
           done
-          
+
           cat >> output/README.md << 'EOF'
-          
+
           ## 🚀 使用方法
-          
+
           ### 1. 添加覆写模块
-          
           在 OpenClash 中添加覆写模块，使用以下格式的 URL:
-          
+
           ```
           https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/output/文件名.conf
           ```
-          
+
           ### 2. 配置环境变量
-          
-          根据配置文件中的提示设置环境变量：
-          
-          - **单订阅配置**: `EN_KEY=机场订阅链接`
-          - **多订阅配置**: `EN_KEY1=订阅1;EN_KEY2=订阅2;...`
-          - **旁路由配置**: 额外需要 `EN_DNS=DNS服务器地址`
-          
+          - 单订阅: EN_KEY=机场订阅链接
+          - 多订阅: EN_KEY1=订阅1;EN_KEY2=订阅2;...
+          - 旁路由: 额外需要 EN_DNS=DNS服务器地址
+
           ### 3. 应用配置
-          
           保存并重启 OpenClash。
-          
+
           ## 📝 配置类型说明
-          
           | 后缀 | 说明 |
           |------|------|
           | (无) | 主路由标准配置 |
-          | `-bypass_router` | 旁路由配置 |
-          | `-smart` | Smart 智能模式 |
-          
+          | -bypass_router | 旁路由配置 |
+          | -smart | Smart 智能模式 |
+
           ## ⚠️ 注意事项
-          
-          1. 所有配置都会自动下载对应的精简 YAML 文件到路由器
-          2. 精简后的 YAML 只包含 proxy-providers, proxy-groups, rule-providers, rules
-          3. 根据 provider 数量自动生成对应的环境变量要求
-          
+          1. 所有配置会自动下载对应的精简 YAML
+          2. 精简后的 YAML 只包含 providers 与 rules
+          3. 根据 provider 数量自动生成环境变量要求
+
           EOF
-      
+
       - name: Generate file checksums
         run: |
+          set -e
           cd output
-          sha256sum *.conf > SHA256SUMS 2>/dev/null || echo "No .conf files"
+          if ls *.conf >/dev/null 2>&1; then
+            sha256sum *.conf > SHA256SUMS
+          else
+            echo "No .conf files found" > SHA256SUMS
+          fi
           cd ..
-      
+
+      - name: Debug SHA256SUMS
+        run: |
+          ls -l output/SHA256SUMS
+          cat output/SHA256SUMS
+
       - name: Get current date
         id: date
         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-      
+
       - name: Create/Update Release
         uses: softprops/action-gh-release@v1
         with:
@@ -142,56 +139,31 @@ jobs:
           name: Release ${{ steps.date.outputs.date }}
           body: |
             ## 📦 OpenClash 覆写配置文件
-            
             **生成时间**: ${{ steps.date.outputs.date }}
-            
-            ### 📁 包含的内容
-            
-            - ✅ 精简后的 YAML 配置文件 (`processed_configs/`)
-            - ✅ OpenClash .conf 覆写文件 (`output/`)
-            - ✅ 文件校验和 (`SHA256SUMS`)
-            
-            ### 🎯 配置类型
-            
-            每个上游配置都生成了 3 种变体：
-            - **标准版** (文件名.conf) - 主路由使用
-            - **旁路由版** (文件名-bypass_router.conf) - 旁路由使用  
-            - **Smart 版** (文件名-smart.conf) - Smart 智能模式
-            
-            ### 🚀 快速开始
-            
-            1. 选择对应的 .conf 文件
-            2. 复制 Raw 链接
-            3. 在 OpenClash 中添加覆写模块
-            4. 设置环境变量（根据文件中的说明）
-            5. 应用配置
-            
-            ### 📊 统计信息
-            
-            - 处理的 YAML 文件: $(ls processed_configs/*.yaml 2>/dev/null | wc -l)
-            - 生成的 .conf 文件: $(ls output/*.conf 2>/dev/null | wc -l)
-            
-            ### 🔗 相关链接
-            
-            - [上游项目](https://github.com/HenryChiao/mihomo_yamls)
-            - [使用文档](https://github.com/${{ github.repository }}/blob/main/README.md)
-            
+
+            ### 📁 包含内容
+            - 精简后的 YAML (`processed_configs/`)
+            - OpenClash 覆写文件 (`output/`)
+            - SHA256SUMS 校验文件
+
+            ### 📊 统计
+            - YAML 数量: $(ls processed_configs/*.yaml 2>/dev/null | wc -l)
+            - .conf 数量: $(ls output/*.conf 2>/dev/null | wc -l)
+
           files: |
             output/*.conf
             output/SHA256SUMS
             output/README.md
-          draft: false
-          prerelease: false
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Commit changes
         run: |
+          set -e
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          
+
           git add processed_configs/ output/
-          
           git commit -m "🤖 Auto-build: ${{ steps.date.outputs.date }}" || echo "No changes to commit"
-          
           git push
