@@ -1,3 +1,6 @@
+# Processed: raw_configs/external/General_Config/Lanlan13-14/configfull_lite.yaml
+# Providers: 3 proxy, 4 rule
+
 proxy-providers:
   Airport_01:
     type: http
@@ -35,6 +38,70 @@ proxy-providers:
       additional-prefix: '[机场名称3]'
       skip-cert-verify: true
       udp: true
+rule-providers:
+  emby_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/rules/Domain/emby.mrs
+  ai_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/rules/Domain/ai.mrs
+  bilibili_ip:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo-lite/geoip/bilibili.mrs
+  fakeip_filter_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/rules/Domain/fakeip-filter.mrs
+rules:
+- GEOSITE,category-ads-all,隐私拦截
+- GEOSITE,private,全球直连
+- GEOIP,private,全球直连,no-resolve
+- GEOSITE,category-games@cn,全球直连
+- GEOSITE,category-public-tracker,全球直连
+- GEOSITE,openai,AI
+- GEOSITE,category-ai-!cn,AI
+- RULE-SET,ai_domain,AI
+- GEOSITE,youtube,YouTube
+- GEOSITE,google,Google
+- GEOIP,google,Google,no-resolve
+- GEOSITE,github,GitHub
+- GEOSITE,onedrive,OneDrive
+- GEOSITE,microsoft,Microsoft
+- GEOSITE,apple,Apple
+- GEOSITE,telegram,Telegram
+- GEOIP,telegram,Telegram,no-resolve
+- GEOSITE,facebook,Meta
+- GEOSITE,netflix,NETFLIX
+- GEOSITE,disney,DisneyPlus
+- GEOSITE,hbo,HBO
+- RULE-SET,emby_domain,Emby
+- GEOSITE,spotify,Spotify
+- GEOSITE,bahamut,巴哈姆特
+- GEOSITE,tiktok,TikTok
+- GEOSITE,bilibili,哔哩哔哩
+- RULE-SET,bilibili_ip,哔哩哔哩,no-resolve
+- GEOSITE,biliintl,哔哩东南亚
+- GEOSITE,category-media-cn,国内媒体
+- GEOSITE,steam,STEAM
+- GEOIP,twitter,节点选择,no-resolve
+- GEOIP,ai,AI,no-resolve
+- GEOSITE,gfw,节点选择
+- GEOSITE,geolocation-!cn,节点选择
+- GEOSITE,cn,全球直连
+- GEOIP,private,全球直连,no-resolve
+- GEOIP,cn,全球直连,no-resolve
+- MATCH,Final
 proxy-groups:
 - name: 节点选择
   type: select
@@ -411,67 +478,3 @@ proxy-groups:
   - 故障转移
   exclude-filter: (?i)(🟢 直连)
   icon: https://pub-8feead0908f649a8b94397f152fb9cba.r2.dev/global.png
-rules:
-- GEOSITE,category-ads-all,隐私拦截
-- GEOSITE,private,全球直连
-- GEOIP,private,全球直连,no-resolve
-- GEOSITE,category-games@cn,全球直连
-- GEOSITE,category-public-tracker,全球直连
-- GEOSITE,openai,AI
-- GEOSITE,category-ai-!cn,AI
-- RULE-SET,ai_domain,AI
-- GEOSITE,youtube,YouTube
-- GEOSITE,google,Google
-- GEOIP,google,Google,no-resolve
-- GEOSITE,github,GitHub
-- GEOSITE,onedrive,OneDrive
-- GEOSITE,microsoft,Microsoft
-- GEOSITE,apple,Apple
-- GEOSITE,telegram,Telegram
-- GEOIP,telegram,Telegram,no-resolve
-- GEOSITE,facebook,Meta
-- GEOSITE,netflix,NETFLIX
-- GEOSITE,disney,DisneyPlus
-- GEOSITE,hbo,HBO
-- RULE-SET,emby_domain,Emby
-- GEOSITE,spotify,Spotify
-- GEOSITE,bahamut,巴哈姆特
-- GEOSITE,tiktok,TikTok
-- GEOSITE,bilibili,哔哩哔哩
-- RULE-SET,bilibili_ip,哔哩哔哩,no-resolve
-- GEOSITE,biliintl,哔哩东南亚
-- GEOSITE,category-media-cn,国内媒体
-- GEOSITE,steam,STEAM
-- GEOIP,twitter,节点选择,no-resolve
-- GEOIP,ai,AI,no-resolve
-- GEOSITE,gfw,节点选择
-- GEOSITE,geolocation-!cn,节点选择
-- GEOSITE,cn,全球直连
-- GEOIP,private,全球直连,no-resolve
-- GEOIP,cn,全球直连,no-resolve
-- MATCH,Final
-rule-providers:
-  emby_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/rules/Domain/emby.mrs
-  ai_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/rules/Domain/ai.mrs
-  bilibili_ip:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo-lite/geoip/bilibili.mrs
-  fakeip_filter_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://raw.githubusercontent.com/Lanlan13-14/Rules/refs/heads/main/rules/Domain/fakeip-filter.mrs

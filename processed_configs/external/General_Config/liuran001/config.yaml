@@ -1,3 +1,6 @@
+# Processed: raw_configs/external/General_Config/liuran001/config.yaml
+# Providers: 2 proxy, 1 rule
+
 proxy-providers:
   订阅一:
     type: http
@@ -14,6 +17,48 @@ proxy-providers:
     interval: 3600
     health-check: *id001
     url: https://example.com/api/v1/client/subscribe?token=ilovechina
+rule-providers:
+  AWAvenue-Ads:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule_provider/AWAvenue-Ads.yaml
+    url: https://ghfast.top/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/refs/heads/main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml
+    interval: 600
+rules:
+- RULE-SET,AWAvenue-Ads,广告拦截
+- GEOSITE,category-scholar-!cn,境外AI
+- GEOSITE,apple,Apple
+- GEOSITE,apple-cn,Apple
+- GEOSITE,ehentai,ehentai
+- GEOSITE,github,Github
+- GEOSITE,twitter,Twitter
+- GEOSITE,youtube,YouTube
+- GEOSITE,google,Google
+- GEOSITE,google-cn,Google
+- GEOSITE,telegram,Telegram
+- GEOSITE,netflix,NETFLIX
+- GEOSITE,tiktok,TikTok
+- GEOSITE,bahamut,巴哈姆特
+- GEOSITE,spotify,Spotify
+- GEOSITE,pixiv,Pixiv
+- GEOSITE,steam@cn,DIRECT
+- GEOSITE,steam,Steam
+- GEOSITE,onedrive,OneDrive
+- GEOSITE,microsoft,微软服务
+- GEOSITE,geolocation-!cn,其他
+- GEOIP,google,Google
+- GEOIP,netflix,NETFLIX
+- GEOIP,telegram,Telegram
+- GEOIP,twitter,Twitter
+- GEOSITE,CN,国内
+- GEOIP,CN,国内
+- IP-CIDR,10.0.0.0/8,DIRECT
+- IP-CIDR,172.16.0.0/12,DIRECT
+- IP-CIDR,192.168.0.0/16,DIRECT
+- IP-CIDR,100.64.0.0/10,DIRECT
+- IP-CIDR,127.0.0.0/8,DIRECT
+- MATCH,其他
 proxy-groups:
 - name: 节点选择
   type: select
@@ -143,45 +188,3 @@ proxy-groups:
   use: *id003
   name: 自动选择
   tolerance: 2
-rules:
-- RULE-SET,AWAvenue-Ads,广告拦截
-- GEOSITE,category-scholar-!cn,境外AI
-- GEOSITE,apple,Apple
-- GEOSITE,apple-cn,Apple
-- GEOSITE,ehentai,ehentai
-- GEOSITE,github,Github
-- GEOSITE,twitter,Twitter
-- GEOSITE,youtube,YouTube
-- GEOSITE,google,Google
-- GEOSITE,google-cn,Google
-- GEOSITE,telegram,Telegram
-- GEOSITE,netflix,NETFLIX
-- GEOSITE,tiktok,TikTok
-- GEOSITE,bahamut,巴哈姆特
-- GEOSITE,spotify,Spotify
-- GEOSITE,pixiv,Pixiv
-- GEOSITE,steam@cn,DIRECT
-- GEOSITE,steam,Steam
-- GEOSITE,onedrive,OneDrive
-- GEOSITE,microsoft,微软服务
-- GEOSITE,geolocation-!cn,其他
-- GEOIP,google,Google
-- GEOIP,netflix,NETFLIX
-- GEOIP,telegram,Telegram
-- GEOIP,twitter,Twitter
-- GEOSITE,CN,国内
-- GEOIP,CN,国内
-- IP-CIDR,10.0.0.0/8,DIRECT
-- IP-CIDR,172.16.0.0/12,DIRECT
-- IP-CIDR,192.168.0.0/16,DIRECT
-- IP-CIDR,100.64.0.0/10,DIRECT
-- IP-CIDR,127.0.0.0/8,DIRECT
-- MATCH,其他
-rule-providers:
-  AWAvenue-Ads:
-    type: http
-    behavior: domain
-    format: yaml
-    path: ./rule_provider/AWAvenue-Ads.yaml
-    url: https://ghfast.top/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/refs/heads/main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml
-    interval: 600

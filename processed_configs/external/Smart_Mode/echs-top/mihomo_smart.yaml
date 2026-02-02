@@ -1,3 +1,6 @@
+# Processed: raw_configs/external/Smart_Mode/echs-top/mihomo_smart.yaml
+# Providers: 3 proxy, 31 rule
+
 proxy-providers:
   link1:
     type: http
@@ -35,6 +38,290 @@ proxy-providers:
     exclude-filter: (?i)套餐|剩余|流量|到期|重置|频道|订阅|官网|禁止|客户端|有效|联系|测试|节点|日期|群组|加入|通知|维护|网址|地址|下载|更新|APP|登录|严禁|海外
     url: 订阅链接3
     path: ./providers/link3.yaml
+rule-providers:
+  private_ip:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: ipcidr
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs
+    path: ./rules/private_ip.mrs
+  AWAvenue-Ads-Rule:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/AWAvenue-Ads-Rule.mrs
+    path: ./rules/AWAvenue-Ads-Rule.mrs
+  private:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
+    path: ./rules/private.mrs
+  fake-ip_add:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/fake-ip_add_domain.mrs
+    path: ./rules/fake-ip_add.mrs
+  direct_domain:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/direct_domain.mrs
+    path: ./rules/direct_domain.mrs
+  category-speedtest:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-speedtest.mrs
+    path: ./rules/category-speedtest.mrs
+  googlefcm:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/googlefcm.mrs
+    path: ./rules/googlefcm.mrs
+  verification:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/verification_domain.mrs
+    path: ./rules/verification.mrs
+  telegram:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs
+    path: ./rules/telegram.mrs
+  meta:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/meta.mrs
+    path: ./rules/meta.mrs
+  twitter:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs
+    path: ./rules/twitter.mrs
+  tiktok:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs
+    path: ./rules/tiktok.mrs
+  netflix:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs
+    path: ./rules/netflix.mrs
+  spotify:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs
+    path: ./rules/spotify.mrs
+  bilibili:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.mrs
+    path: ./rules/bilibili.mrs
+  biliintl:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/biliintl.mrs
+    path: ./rules/biliintl.mrs
+  youtube:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs
+    path: ./rules/youtube.mrs
+  category-ai-!cn:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
+    path: ./rules/category-ai-!cn.mrs
+  ai_add:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/ai_add_domain.mrs
+    path: ./rules/ai_add.mrs
+  pixiv:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pixiv.mrs
+    path: ./rules/pixiv.mrs
+  github:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs
+    path: ./rules/github.mrs
+  steam@cn:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs
+    path: ./rules/steam@cn.mrs
+  google:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs
+    path: ./rules/google.mrs
+  cn:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: domain
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs
+    path: ./rules/cn.mrs
+  direct_ip:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: ipcidr
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/direct_ip.mrs
+    path: ./rules/direct_ip.mrs
+  telegram_ip:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: ipcidr
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs
+    path: ./rules/telegram_ip.mrs
+  facebook_ip:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: ipcidr
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/facebook.mrs
+    path: ./rules/facebook_ip.mrs
+  twitter_ip:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: ipcidr
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs
+    path: ./rules/twitter_ip.mrs
+  netflix_ip:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: ipcidr
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs
+    path: ./rules/netflix_ip.mrs
+  google_ip:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: ipcidr
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs
+    path: ./rules/google_ip.mrs
+  cn_ip:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    behavior: ipcidr
+    format: mrs
+    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
+    path: ./rules/cn_ip.mrs
+rules:
+- DST-PORT,5228-5230,FCM
+- RULE-SET,private_ip,DIRECT,no-resolve
+- RULE-SET,AWAvenue-Ads-Rule,AD
+- RULE-SET,private,DIRECT
+- RULE-SET,direct_domain,DIRECT
+- RULE-SET,category-speedtest,SPEEDTEST
+- RULE-SET,googlefcm,FCM
+- RULE-SET,verification,BOTTEST
+- RULE-SET,telegram,TELEGRAM
+- RULE-SET,meta,META
+- RULE-SET,twitter,TWITTER
+- RULE-SET,tiktok,TIKTOK
+- RULE-SET,netflix,NETFLIX
+- RULE-SET,spotify,SPOTIFY
+- RULE-SET,bilibili,BILIBILI
+- RULE-SET,biliintl,BILIBILI
+- RULE-SET,youtube,YOUTUBE
+- RULE-SET,category-ai-!cn,AI
+- RULE-SET,ai_add,AI
+- RULE-SET,pixiv,PIXIV
+- RULE-SET,github,GITHUB
+- DOMAIN-SUFFIX,sharepoint.com,ONEDRIVE-DL
+- DOMAIN-SUFFIX,steamcdn-a.akamaihd.net,STEAM-CN
+- RULE-SET,steam@cn,STEAM-CN
+- RULE-SET,google,GOOGLE
+- RULE-SET,cn,DIRECT
+- RULE-SET,direct_ip,DIRECT
+- RULE-SET,telegram_ip,TELEGRAM
+- RULE-SET,facebook_ip,META
+- RULE-SET,twitter_ip,TWITTER
+- RULE-SET,netflix_ip,NETFLIX
+- RULE-SET,google_ip,GOOGLE
+- RULE-SET,cn_ip,DIRECT
+- MATCH,PROXY
 proxy-groups:
 - use: &id003
   - link3
@@ -315,287 +602,3 @@ proxy-groups:
   include-all-providers: true
   hidden: true
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Globefish.webp
-rules:
-- DST-PORT,5228-5230,FCM
-- RULE-SET,private_ip,DIRECT,no-resolve
-- RULE-SET,AWAvenue-Ads-Rule,AD
-- RULE-SET,private,DIRECT
-- RULE-SET,direct_domain,DIRECT
-- RULE-SET,category-speedtest,SPEEDTEST
-- RULE-SET,googlefcm,FCM
-- RULE-SET,verification,BOTTEST
-- RULE-SET,telegram,TELEGRAM
-- RULE-SET,meta,META
-- RULE-SET,twitter,TWITTER
-- RULE-SET,tiktok,TIKTOK
-- RULE-SET,netflix,NETFLIX
-- RULE-SET,spotify,SPOTIFY
-- RULE-SET,bilibili,BILIBILI
-- RULE-SET,biliintl,BILIBILI
-- RULE-SET,youtube,YOUTUBE
-- RULE-SET,category-ai-!cn,AI
-- RULE-SET,ai_add,AI
-- RULE-SET,pixiv,PIXIV
-- RULE-SET,github,GITHUB
-- DOMAIN-SUFFIX,sharepoint.com,ONEDRIVE-DL
-- DOMAIN-SUFFIX,steamcdn-a.akamaihd.net,STEAM-CN
-- RULE-SET,steam@cn,STEAM-CN
-- RULE-SET,google,GOOGLE
-- RULE-SET,cn,DIRECT
-- RULE-SET,direct_ip,DIRECT
-- RULE-SET,telegram_ip,TELEGRAM
-- RULE-SET,facebook_ip,META
-- RULE-SET,twitter_ip,TWITTER
-- RULE-SET,netflix_ip,NETFLIX
-- RULE-SET,google_ip,GOOGLE
-- RULE-SET,cn_ip,DIRECT
-- MATCH,PROXY
-rule-providers:
-  private_ip:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: ipcidr
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs
-    path: ./rules/private_ip.mrs
-  AWAvenue-Ads-Rule:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/AWAvenue-Ads-Rule.mrs
-    path: ./rules/AWAvenue-Ads-Rule.mrs
-  private:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
-    path: ./rules/private.mrs
-  fake-ip_add:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/fake-ip_add_domain.mrs
-    path: ./rules/fake-ip_add.mrs
-  direct_domain:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/direct_domain.mrs
-    path: ./rules/direct_domain.mrs
-  category-speedtest:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-speedtest.mrs
-    path: ./rules/category-speedtest.mrs
-  googlefcm:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/googlefcm.mrs
-    path: ./rules/googlefcm.mrs
-  verification:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/verification_domain.mrs
-    path: ./rules/verification.mrs
-  telegram:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs
-    path: ./rules/telegram.mrs
-  meta:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/meta.mrs
-    path: ./rules/meta.mrs
-  twitter:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs
-    path: ./rules/twitter.mrs
-  tiktok:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs
-    path: ./rules/tiktok.mrs
-  netflix:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs
-    path: ./rules/netflix.mrs
-  spotify:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs
-    path: ./rules/spotify.mrs
-  bilibili:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.mrs
-    path: ./rules/bilibili.mrs
-  biliintl:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/biliintl.mrs
-    path: ./rules/biliintl.mrs
-  youtube:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs
-    path: ./rules/youtube.mrs
-  category-ai-!cn:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
-    path: ./rules/category-ai-!cn.mrs
-  ai_add:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/ai_add_domain.mrs
-    path: ./rules/ai_add.mrs
-  pixiv:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pixiv.mrs
-    path: ./rules/pixiv.mrs
-  github:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs
-    path: ./rules/github.mrs
-  steam@cn:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs
-    path: ./rules/steam@cn.mrs
-  google:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs
-    path: ./rules/google.mrs
-  cn:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: domain
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs
-    path: ./rules/cn.mrs
-  direct_ip:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: ipcidr
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/rules/mrs/direct_ip.mrs
-    path: ./rules/direct_ip.mrs
-  telegram_ip:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: ipcidr
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs
-    path: ./rules/telegram_ip.mrs
-  facebook_ip:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: ipcidr
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/facebook.mrs
-    path: ./rules/facebook_ip.mrs
-  twitter_ip:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: ipcidr
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs
-    path: ./rules/twitter_ip.mrs
-  netflix_ip:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: ipcidr
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs
-    path: ./rules/netflix_ip.mrs
-  google_ip:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: ipcidr
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs
-    path: ./rules/google_ip.mrs
-  cn_ip:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    behavior: ipcidr
-    format: mrs
-    url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
-    path: ./rules/cn_ip.mrs

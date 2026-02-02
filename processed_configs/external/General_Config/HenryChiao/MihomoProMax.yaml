@@ -1,3 +1,6 @@
+# Processed: raw_configs/external/General_Config/HenryChiao/MihomoProMax.yaml
+# Providers: 2 proxy, 43 rule
+
 proxy-providers:
   优质服务商:
     type: http
@@ -20,6 +23,312 @@ proxy-providers:
     url: 备用订阅源地址
     override:
       additional-prefix: '[备] '
+rule-providers:
+  Tracking:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Tracking.mrs
+  Advertising:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Advertising.mrs
+  Direct:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Direct.mrs
+  LocationDKS:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/LocationDKS.mrs
+  Private:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
+  Download:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs
+  Speedtest:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Speedtest.mrs
+  AI:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/AI.mrs
+  Telegram:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
+  Twitter:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Twitter.mrs
+  SocialMedia:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
+  NewsMedia:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/NewsMedia.mrs
+  Games:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Games.mrs
+  Crypto:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Crypto.mrs
+  Netflix:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Netflix.mrs
+  YouTube:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/YouTube.mrs
+  XPTV:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/XPTV.mrs
+  Emby:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
+  Streaming:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
+  AppleCN:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/AppleCN.mrs
+  Apple:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Apple.mrs
+  Google:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Google.mrs
+  Microsoft:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Microsoft.mrs
+  Facebook:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Facebook.mrs
+  Proxy:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Proxy.mrs
+  China:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
+  AdvertisingIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Advertising.mrs
+  PrivateIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
+  AIIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
+  TelegramIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
+  SocialMediaIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
+  XPTVIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/XPTV.mrs
+  EmbyIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
+  NetflixIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Netflix.mrs
+  StreamingIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
+  GoogleIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Google.mrs
+  FacebookIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Facebook.mrs
+  ProxyIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Proxy.mrs
+  ChinaIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
+  ukwifi:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/HenryChiao/wificalling/refs/heads/main/qiao/wificalling.list
+  AWAvenueAds:
+    type: http
+    behavior: domain
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.yaml
+  github:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    url: https://rule.kelee.one/Clash/GitHub.yaml
+  fakeip-filter:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs
+rules:
+- RULE-SET,Tracking,REJECT
+- RULE-SET,AWAvenueAds,REJECT
+- RULE-SET,Advertising,REJECT
+- AND,((DST-PORT,443),(NETWORK,UDP)),REJECT
+- RULE-SET,LocationDKS,抖快书定位
+- RULE-SET,Private,直接连接
+- RULE-SET,Direct,直接连接
+- RULE-SET,XPTV,直接连接
+- DOMAIN-SUFFIX,3gppnetwork.org,UKwifi
+- RULE-SET,ukwifi,UKwifi
+- RULE-SET,Download,直接连接
+- RULE-SET,AppleCN,直接连接
+- RULE-SET,AI,人工智能
+- DOMAIN-KEYWORD,speedtest,网络测试
+- RULE-SET,Speedtest,网络测试
+- RULE-SET,Twitter,推特社交
+- RULE-SET,Telegram,电报消息
+- RULE-SET,SocialMedia,社交平台
+- RULE-SET,NewsMedia,新闻媒体
+- DOMAIN-SUFFIX,steamserver.net,DIRECT
+- RULE-SET,Games,游戏平台
+- RULE-SET,Crypto,货币平台
+- RULE-SET,Emby,Emby服
+- RULE-SET,Netflix,奈飞视频
+- RULE-SET,YouTube,油管视频
+- RULE-SET,Streaming,国际媒体
+- RULE-SET,Apple,苹果服务
+- RULE-SET,Google,谷歌服务
+- RULE-SET,github,Github
+- RULE-SET,Microsoft,微软服务
+- RULE-SET,Proxy,国外流量
+- RULE-SET,China,国内流量
+- RULE-SET,AdvertisingIP,REJECT,no-resolve
+- RULE-SET,PrivateIP,直接连接,no-resolve
+- RULE-SET,XPTVIP,直接连接,no-resolve
+- RULE-SET,AIIP,人工智能,no-resolve
+- RULE-SET,TelegramIP,电报消息,no-resolve
+- RULE-SET,SocialMediaIP,社交平台,no-resolve
+- RULE-SET,EmbyIP,Emby服,no-resolve
+- RULE-SET,NetflixIP,奈飞视频,no-resolve
+- RULE-SET,StreamingIP,国际媒体,no-resolve
+- RULE-SET,GoogleIP,谷歌服务,no-resolve
+- RULE-SET,ProxyIP,国外流量,no-resolve
+- RULE-SET,ChinaIP,国内流量
+- MATCH,兜底流量
 proxy-groups:
 - type: select
   proxies:
@@ -479,309 +788,3 @@ proxy-groups:
   include-all: true
   filter: ^(?=.*(?i)(奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU))(?!.*(排除1|排除2|5x)).*$
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
-rules:
-- RULE-SET,Tracking,REJECT
-- RULE-SET,AWAvenueAds,REJECT
-- RULE-SET,Advertising,REJECT
-- AND,((DST-PORT,443),(NETWORK,UDP)),REJECT
-- RULE-SET,LocationDKS,抖快书定位
-- RULE-SET,Private,直接连接
-- RULE-SET,Direct,直接连接
-- RULE-SET,XPTV,直接连接
-- DOMAIN-SUFFIX,3gppnetwork.org,UKwifi
-- RULE-SET,ukwifi,UKwifi
-- RULE-SET,Download,直接连接
-- RULE-SET,AppleCN,直接连接
-- RULE-SET,AI,人工智能
-- DOMAIN-KEYWORD,speedtest,网络测试
-- RULE-SET,Speedtest,网络测试
-- RULE-SET,Twitter,推特社交
-- RULE-SET,Telegram,电报消息
-- RULE-SET,SocialMedia,社交平台
-- RULE-SET,NewsMedia,新闻媒体
-- DOMAIN-SUFFIX,steamserver.net,DIRECT
-- RULE-SET,Games,游戏平台
-- RULE-SET,Crypto,货币平台
-- RULE-SET,Emby,Emby服
-- RULE-SET,Netflix,奈飞视频
-- RULE-SET,YouTube,油管视频
-- RULE-SET,Streaming,国际媒体
-- RULE-SET,Apple,苹果服务
-- RULE-SET,Google,谷歌服务
-- RULE-SET,github,Github
-- RULE-SET,Microsoft,微软服务
-- RULE-SET,Proxy,国外流量
-- RULE-SET,China,国内流量
-- RULE-SET,AdvertisingIP,REJECT,no-resolve
-- RULE-SET,PrivateIP,直接连接,no-resolve
-- RULE-SET,XPTVIP,直接连接,no-resolve
-- RULE-SET,AIIP,人工智能,no-resolve
-- RULE-SET,TelegramIP,电报消息,no-resolve
-- RULE-SET,SocialMediaIP,社交平台,no-resolve
-- RULE-SET,EmbyIP,Emby服,no-resolve
-- RULE-SET,NetflixIP,奈飞视频,no-resolve
-- RULE-SET,StreamingIP,国际媒体,no-resolve
-- RULE-SET,GoogleIP,谷歌服务,no-resolve
-- RULE-SET,ProxyIP,国外流量,no-resolve
-- RULE-SET,ChinaIP,国内流量
-- MATCH,兜底流量
-rule-providers:
-  Tracking:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Tracking.mrs
-  Advertising:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Advertising.mrs
-  Direct:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Direct.mrs
-  LocationDKS:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/LocationDKS.mrs
-  Private:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
-  Download:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs
-  Speedtest:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Speedtest.mrs
-  AI:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/AI.mrs
-  Telegram:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
-  Twitter:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Twitter.mrs
-  SocialMedia:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
-  NewsMedia:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/NewsMedia.mrs
-  Games:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Games.mrs
-  Crypto:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Crypto.mrs
-  Netflix:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Netflix.mrs
-  YouTube:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/YouTube.mrs
-  XPTV:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/XPTV.mrs
-  Emby:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
-  Streaming:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
-  AppleCN:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/AppleCN.mrs
-  Apple:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Apple.mrs
-  Google:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Google.mrs
-  Microsoft:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Microsoft.mrs
-  Facebook:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Facebook.mrs
-  Proxy:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Proxy.mrs
-  China:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
-  AdvertisingIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Advertising.mrs
-  PrivateIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
-  AIIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
-  TelegramIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
-  SocialMediaIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
-  XPTVIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/XPTV.mrs
-  EmbyIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
-  NetflixIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Netflix.mrs
-  StreamingIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
-  GoogleIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Google.mrs
-  FacebookIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Facebook.mrs
-  ProxyIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Proxy.mrs
-  ChinaIP:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    interval: 86400
-    url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
-  ukwifi:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/HenryChiao/wificalling/refs/heads/main/qiao/wificalling.list
-  AWAvenueAds:
-    type: http
-    behavior: domain
-    format: yaml
-    interval: 86400
-    url: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.yaml
-  github:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    url: https://rule.kelee.one/Clash/GitHub.yaml
-  fakeip-filter:
-    type: http
-    behavior: domain
-    format: mrs
-    interval: 86400
-    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs
