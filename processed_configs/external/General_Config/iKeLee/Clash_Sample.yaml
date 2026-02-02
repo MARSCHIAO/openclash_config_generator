@@ -1,237 +1,6 @@
 # Processed: raw_configs/external/General_Config/iKeLee/Clash_Sample.yaml
 # Providers: 2 proxy, 23 rule
 
-proxy-providers:
-  机场名称1:
-    type: http
-    interval: 3600
-    health-check: &id001
-      enable: true
-      url: http://www.google.com/blank.html
-      interval: 6
-    url: 机场1的订阅URL
-    path: ./proxy_providers/机场名称1.yaml
-    override:
-      additional-prefix: '[机场名称1] '
-  机场名称2:
-    type: http
-    interval: 3600
-    health-check: *id001
-    url: 机场2的订阅URL
-    path: ./proxy_providers/机场名称2.yaml
-    override:
-      additional-prefix: '[机场名称2] '
-rule-providers:
-  LAN:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/Lan.yaml
-    url: https://kelee.one/Tool/Clash/Rule/LAN_SPLITTER.yaml
-  Direct:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/Direct.yaml
-    url: https://kelee.one/Tool/Clash/Rule/Direct.yaml
-  Proxy:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/Proxy.yaml
-    url: https://kelee.one/Tool/Clash/Rule/Proxy.yaml
-  ChinaDownloadCDN:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/ChinaDownloadCDN.yaml
-    url: https://kelee.one/Tool/Clash/Rule/ChinaDownloadCDN.yaml
-  InternationalDownloadCDN:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/InternationalDownloadCDN.yaml
-    url: https://kelee.one/Tool/Clash/Rule/InternationalDownloadCDN.yaml
-  AI:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/AI.yaml
-    url: https://kelee.one/Tool/Clash/Rule/AI.yaml
-  TikTok:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/TikTok.yaml
-    url: https://kelee.one/Tool/Clash/Rule/TikTok.yaml
-  SpeedtestIntl:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/SpeedtestInternational.yaml
-    url: https://kelee.one/Tool/Clash/Rule/SpeedtestInternational.yaml
-  Game:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/Game.yaml
-    url: https://kelee.one/Tool/Clash/Rule/Game.yaml
-  1Password:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/1PasswordUS.yaml
-    url: https://kelee.one/Tool/Clash/Rule/1PasswordUS.yaml
-  Steam:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/Steam.yaml
-    url: https://rule.kelee.one/Clash/Steam.yaml
-  Netflix:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/Netflix.yaml
-    url: https://rule.kelee.one/Clash/Netflix.yaml
-  Emby:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/Emby.yaml
-    url: https://kelee.one/Tool/Clash/Rule/EmbyServer.yaml
-  iCloudChina:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/iCloudChina.yaml
-    url: https://kelee.one/Tool/Clash/Rule/iCloudChina.yaml
-  ApplePushNotificationService:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/ApplePushNotificationService.yaml
-    url: https://kelee.one/Tool/Clash/Rule/ApplePushNotificationService.yaml
-  AppleSoftwareUpdates:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/AppleSoftwareUpdates.yaml
-    url: https://kelee.one/Tool/Clash/Rule/AppleSoftwareUpdates.yaml
-  AppleID:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/AppleID.yaml
-    url: https://kelee.one/Tool/Clash/Rule/AppleAccount.yaml
-  AppStore:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/AppStore.yaml
-    url: https://kelee.one/Tool/Clash/Rule/AppStore.yaml
-  TestFlight:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/TestFlight.yaml
-    url: https://rule.kelee.one/Clash/TestFlight.yaml
-  Microsoft:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/Microsoft.yaml
-    url: https://rule.kelee.one/Clash/Microsoft.yaml
-  Google:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/Google.yaml
-    url: https://rule.kelee.one/Clash/Google.yaml
-  Telegram:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/Telegram.yaml
-    url: https://kelee.one/Tool/Clash/Rule/Telegram.yaml
-  ESET_China:
-    type: http
-    behavior: classical
-    interval: 3600
-    format: yaml
-    proxy: DIRECT
-    path: ./rules/ESET_China.yaml
-    url: https://kelee.one/Tool/Clash/Rule/ESET_China.yaml
-rules:
-- RULE-SET, LAN, DIRECT
-- RULE-SET, Direct, DIRECT
-- RULE-SET, Proxy, 兜底后备策略
-- RULE-SET, ChinaDownloadCDN, DIRECT
-- RULE-SET, InternationalDownloadCDN, 境外下载
-- RULE-SET, AI, AI
-- RULE-SET, TikTok, TikTok
-- RULE-SET, SpeedtestIntl, SpeedtestIntl
-- RULE-SET, Steam, 兜底后备策略
-- RULE-SET, Game, 游戏选择
-- RULE-SET, Netflix, Netflix
-- RULE-SET, Emby, Emby
-- RULE-SET, TestFlight, TestFlight
-- RULE-SET, iCloudChina, DIRECT
-- RULE-SET, ApplePushNotificationService, DIRECT
-- RULE-SET, AppleSoftwareUpdates, DIRECT
-- RULE-SET, AppleID, Apple账户
-- RULE-SET, AppStore, App Store
-- RULE-SET, 1Password, 1Password
-- RULE-SET, Microsoft, 兜底后备策略
-- RULE-SET, Google, 兜底后备策略
-- RULE-SET, Telegram, 兜底后备策略
-- RULE-SET, ESET_China, DIRECT
-- GEOIP, CN, DIRECT
-- MATCH, 兜底后备策略
 proxy-groups:
 - name: 游戏选择
   type: select
@@ -462,3 +231,234 @@ proxy-groups:
   include-all-providers: true
   name: 德国自动策略
   filter: ^(?=.*((?i)🇩🇪|德国|(\b(DE|DEU|Germany)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$
+rule-providers:
+  LAN:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/Lan.yaml
+    url: https://kelee.one/Tool/Clash/Rule/LAN_SPLITTER.yaml
+  Direct:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/Direct.yaml
+    url: https://kelee.one/Tool/Clash/Rule/Direct.yaml
+  Proxy:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/Proxy.yaml
+    url: https://kelee.one/Tool/Clash/Rule/Proxy.yaml
+  ChinaDownloadCDN:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/ChinaDownloadCDN.yaml
+    url: https://kelee.one/Tool/Clash/Rule/ChinaDownloadCDN.yaml
+  InternationalDownloadCDN:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/InternationalDownloadCDN.yaml
+    url: https://kelee.one/Tool/Clash/Rule/InternationalDownloadCDN.yaml
+  AI:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/AI.yaml
+    url: https://kelee.one/Tool/Clash/Rule/AI.yaml
+  TikTok:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/TikTok.yaml
+    url: https://kelee.one/Tool/Clash/Rule/TikTok.yaml
+  SpeedtestIntl:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/SpeedtestInternational.yaml
+    url: https://kelee.one/Tool/Clash/Rule/SpeedtestInternational.yaml
+  Game:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/Game.yaml
+    url: https://kelee.one/Tool/Clash/Rule/Game.yaml
+  1Password:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/1PasswordUS.yaml
+    url: https://kelee.one/Tool/Clash/Rule/1PasswordUS.yaml
+  Steam:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/Steam.yaml
+    url: https://rule.kelee.one/Clash/Steam.yaml
+  Netflix:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/Netflix.yaml
+    url: https://rule.kelee.one/Clash/Netflix.yaml
+  Emby:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/Emby.yaml
+    url: https://kelee.one/Tool/Clash/Rule/EmbyServer.yaml
+  iCloudChina:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/iCloudChina.yaml
+    url: https://kelee.one/Tool/Clash/Rule/iCloudChina.yaml
+  ApplePushNotificationService:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/ApplePushNotificationService.yaml
+    url: https://kelee.one/Tool/Clash/Rule/ApplePushNotificationService.yaml
+  AppleSoftwareUpdates:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/AppleSoftwareUpdates.yaml
+    url: https://kelee.one/Tool/Clash/Rule/AppleSoftwareUpdates.yaml
+  AppleID:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/AppleID.yaml
+    url: https://kelee.one/Tool/Clash/Rule/AppleAccount.yaml
+  AppStore:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/AppStore.yaml
+    url: https://kelee.one/Tool/Clash/Rule/AppStore.yaml
+  TestFlight:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/TestFlight.yaml
+    url: https://rule.kelee.one/Clash/TestFlight.yaml
+  Microsoft:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/Microsoft.yaml
+    url: https://rule.kelee.one/Clash/Microsoft.yaml
+  Google:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/Google.yaml
+    url: https://rule.kelee.one/Clash/Google.yaml
+  Telegram:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/Telegram.yaml
+    url: https://kelee.one/Tool/Clash/Rule/Telegram.yaml
+  ESET_China:
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+    proxy: DIRECT
+    path: ./rules/ESET_China.yaml
+    url: https://kelee.one/Tool/Clash/Rule/ESET_China.yaml
+proxy-providers:
+  机场名称1:
+    type: http
+    interval: 3600
+    health-check: &id001
+      enable: true
+      url: http://www.google.com/blank.html
+      interval: 6
+    url: 机场1的订阅URL
+    path: ./proxy_providers/机场名称1.yaml
+    override:
+      additional-prefix: '[机场名称1] '
+  机场名称2:
+    type: http
+    interval: 3600
+    health-check: *id001
+    url: 机场2的订阅URL
+    path: ./proxy_providers/机场名称2.yaml
+    override:
+      additional-prefix: '[机场名称2] '
+rules:
+- RULE-SET, LAN, DIRECT
+- RULE-SET, Direct, DIRECT
+- RULE-SET, Proxy, 兜底后备策略
+- RULE-SET, ChinaDownloadCDN, DIRECT
+- RULE-SET, InternationalDownloadCDN, 境外下载
+- RULE-SET, AI, AI
+- RULE-SET, TikTok, TikTok
+- RULE-SET, SpeedtestIntl, SpeedtestIntl
+- RULE-SET, Steam, 兜底后备策略
+- RULE-SET, Game, 游戏选择
+- RULE-SET, Netflix, Netflix
+- RULE-SET, Emby, Emby
+- RULE-SET, TestFlight, TestFlight
+- RULE-SET, iCloudChina, DIRECT
+- RULE-SET, ApplePushNotificationService, DIRECT
+- RULE-SET, AppleSoftwareUpdates, DIRECT
+- RULE-SET, AppleID, Apple账户
+- RULE-SET, AppStore, App Store
+- RULE-SET, 1Password, 1Password
+- RULE-SET, Microsoft, 兜底后备策略
+- RULE-SET, Google, 兜底后备策略
+- RULE-SET, Telegram, 兜底后备策略
+- RULE-SET, ESET_China, DIRECT
+- GEOIP, CN, DIRECT
+- MATCH, 兜底后备策略
