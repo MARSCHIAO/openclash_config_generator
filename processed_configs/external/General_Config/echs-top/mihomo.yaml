@@ -1,45 +1,8 @@
 # Processed: raw_configs/external/General_Config/echs-top/mihomo.yaml
 # Providers: 3 proxy, 31 rule
 
-proxy-providers:
-  link1:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    header: &id001
-      User-Agent:
-      - clash-verge/v2.4.4
-    health-check: &id002
-      enable: true
-      url: https://8.8.8.8/generate_204
-      expected-status: 204
-      interval: 600
-      timeout: 3000
-      max-failed-times: 2
-      lazy: false
-    exclude-filter: (?i)套餐|剩余|流量|到期|重置|频道|订阅|官网|禁止|客户端|有效|联系|测试|节点|日期|群组|加入|通知|维护|网址|地址|下载|更新|APP|登录|严禁|海外
-    url: 订阅链接1
-    path: ./providers/link1.yaml
-  link2:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    header: *id001
-    health-check: *id002
-    exclude-filter: (?i)套餐|剩余|流量|到期|重置|频道|订阅|官网|禁止|客户端|有效|联系|测试|节点|日期|群组|加入|通知|维护|网址|地址|下载|更新|APP|登录|严禁|海外
-    url: 订阅链接2
-    path: ./providers/link2.yaml
-  link3:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    header: *id001
-    health-check: *id002
-    exclude-filter: (?i)套餐|剩余|流量|到期|重置|频道|订阅|官网|禁止|客户端|有效|联系|测试|节点|日期|群组|加入|通知|维护|网址|地址|下载|更新|APP|登录|严禁|海外
-    url: 订阅链接3
-    path: ./providers/link3.yaml
 proxy-groups:
-- use: &id003
+- use: &id001
   - link3
   name: PROXY
   type: select
@@ -55,9 +18,9 @@ proxy-groups:
   - 英国|FALLBACK
   - 荷兰|FALLBACK
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Global.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: &id004
+  proxies: &id002
   - PROXY
   - DIRECT
   - URLTEST
@@ -83,9 +46,9 @@ proxy-groups:
   type: select
   include-all-providers: true
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/SpeedTest.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: &id005
+  proxies: &id003
   - DIRECT
   - PROXY
   - URLTEST
@@ -100,82 +63,82 @@ proxy-groups:
   - 荷兰|FALLBACK
   name: FCM
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/FCM_Firebase_Cloud_Messaging.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: BOTTEST
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/CloudFlare.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: TELEGRAM
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Telegram.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: META
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Meta_1.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: TWITTER
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/X.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: TIKTOK
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/TikTok.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: NETFLIX
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Netflix.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: SPOTIFY
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Spotify.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id005
+  proxies: *id003
   name: BILIBILI
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Bilibili.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: YOUTUBE
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/YouTube.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: AI
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/AI.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: PIXIV
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Pixiv.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: GITHUB
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/GitHub.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id005
+  proxies: *id003
   name: ONEDRIVE-DL
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/OneDrive.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id005
+  proxies: *id003
   name: STEAM-CN
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Steam.webp
-- use: *id003
+- use: *id001
   type: select
-  proxies: *id004
+  proxies: *id002
   name: GOOGLE
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Google.webp
-- use: &id006
+- use: &id004
   - link1
   - link2
   type: url-test
@@ -183,55 +146,55 @@ proxy-groups:
   hidden: true
   name: URLTEST
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Fast.webp
-- use: *id006
+- use: *id004
   type: fallback
   hidden: true
   name: 港澳台|FALLBACK
   filter: (?i)🇭🇰|香港|\bHK\b|\bhongkong\b|\bhong\s?kong\b|🇲🇴|澳门|\bMO\b|\bmacau\b|\bmacao\b|🇹🇼|台湾|\bTW\b|\btaiwan\b
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/cn.svg
-- use: *id006
+- use: *id004
   type: fallback
   hidden: true
   name: 香港|FALLBACK
   filter: (?i)🇭🇰|香港|\bHK\b|\bhongkong\b|\bhong\s?kong\b
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/hk.svg
-- use: *id006
+- use: *id004
   type: fallback
   hidden: true
   name: 台湾|FALLBACK
   filter: (?i)🇹🇼|台湾|\bTW\b|\btaiwan\b
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/tw.svg
-- use: *id006
+- use: *id004
   type: fallback
   hidden: true
   name: 日本|FALLBACK
   filter: (?i)🇯🇵|日本|\bJP\b|\bjapan\b
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/jp.svg
-- use: *id006
+- use: *id004
   type: fallback
   hidden: true
   name: 新加坡|FALLBACK
   filter: (?i)🇸🇬|新加坡|狮城|\bSG\b|\bsingapore\b
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/sg.svg
-- use: *id006
+- use: *id004
   type: fallback
   hidden: true
   name: 美国|FALLBACK
   filter: (?i)🇺🇸|美国|\bUS\b|\bunitedstates\b|\bunited\s?states\b
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/us.svg
-- use: *id006
+- use: *id004
   type: fallback
   hidden: true
   name: 德国|FALLBACK
   filter: (?i)🇩🇪|德国|\bDE\b|\bgermany\b
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/de.svg
-- use: *id006
+- use: *id004
   type: fallback
   hidden: true
   name: 英国|FALLBACK
   filter: (?i)🇬🇧|英国|\bUK\b|\bGB\b|\bunitedkingdom\b|\bunited\s?kingdom\b
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/gb.svg
-- use: *id006
+- use: *id004
   type: fallback
   hidden: true
   name: 荷兰|FALLBACK
@@ -273,41 +236,6 @@ proxy-groups:
   include-all-providers: true
   hidden: true
   icon: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/echs-top/proxy/main/icon/Globefish.webp
-rules:
-- DST-PORT,5228-5230,FCM
-- RULE-SET,private_ip,DIRECT,no-resolve
-- RULE-SET,AWAvenue-Ads-Rule,AD
-- RULE-SET,private,DIRECT
-- RULE-SET,direct_domain,DIRECT
-- RULE-SET,category-speedtest,SPEEDTEST
-- RULE-SET,googlefcm,FCM
-- RULE-SET,verification,BOTTEST
-- RULE-SET,telegram,TELEGRAM
-- RULE-SET,meta,META
-- RULE-SET,twitter,TWITTER
-- RULE-SET,tiktok,TIKTOK
-- RULE-SET,netflix,NETFLIX
-- RULE-SET,spotify,SPOTIFY
-- RULE-SET,bilibili,BILIBILI
-- RULE-SET,biliintl,BILIBILI
-- RULE-SET,youtube,YOUTUBE
-- RULE-SET,category-ai-!cn,AI
-- RULE-SET,ai_add,AI
-- RULE-SET,pixiv,PIXIV
-- RULE-SET,github,GITHUB
-- DOMAIN-SUFFIX,sharepoint.com,ONEDRIVE-DL
-- DOMAIN-SUFFIX,steamcdn-a.akamaihd.net,STEAM-CN
-- RULE-SET,steam@cn,STEAM-CN
-- RULE-SET,google,GOOGLE
-- RULE-SET,cn,DIRECT
-- RULE-SET,direct_ip,DIRECT
-- RULE-SET,telegram_ip,TELEGRAM
-- RULE-SET,facebook_ip,META
-- RULE-SET,twitter_ip,TWITTER
-- RULE-SET,netflix_ip,NETFLIX
-- RULE-SET,google_ip,GOOGLE
-- RULE-SET,cn_ip,DIRECT
-- MATCH,PROXY
 rule-providers:
   private_ip:
     type: http
@@ -557,3 +485,75 @@ rule-providers:
     format: mrs
     url: https://cdn.gh-proxy.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
     path: ./rules/cn_ip.mrs
+rules:
+- DST-PORT,5228-5230,FCM
+- RULE-SET,private_ip,DIRECT,no-resolve
+- RULE-SET,AWAvenue-Ads-Rule,AD
+- RULE-SET,private,DIRECT
+- RULE-SET,direct_domain,DIRECT
+- RULE-SET,category-speedtest,SPEEDTEST
+- RULE-SET,googlefcm,FCM
+- RULE-SET,verification,BOTTEST
+- RULE-SET,telegram,TELEGRAM
+- RULE-SET,meta,META
+- RULE-SET,twitter,TWITTER
+- RULE-SET,tiktok,TIKTOK
+- RULE-SET,netflix,NETFLIX
+- RULE-SET,spotify,SPOTIFY
+- RULE-SET,bilibili,BILIBILI
+- RULE-SET,biliintl,BILIBILI
+- RULE-SET,youtube,YOUTUBE
+- RULE-SET,category-ai-!cn,AI
+- RULE-SET,ai_add,AI
+- RULE-SET,pixiv,PIXIV
+- RULE-SET,github,GITHUB
+- DOMAIN-SUFFIX,sharepoint.com,ONEDRIVE-DL
+- DOMAIN-SUFFIX,steamcdn-a.akamaihd.net,STEAM-CN
+- RULE-SET,steam@cn,STEAM-CN
+- RULE-SET,google,GOOGLE
+- RULE-SET,cn,DIRECT
+- RULE-SET,direct_ip,DIRECT
+- RULE-SET,telegram_ip,TELEGRAM
+- RULE-SET,facebook_ip,META
+- RULE-SET,twitter_ip,TWITTER
+- RULE-SET,netflix_ip,NETFLIX
+- RULE-SET,google_ip,GOOGLE
+- RULE-SET,cn_ip,DIRECT
+- MATCH,PROXY
+proxy-providers:
+  link1:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    header: &id005
+      User-Agent:
+      - clash-verge/v2.4.4
+    health-check: &id006
+      enable: true
+      url: https://8.8.8.8/generate_204
+      expected-status: 204
+      interval: 600
+      timeout: 3000
+      max-failed-times: 2
+      lazy: false
+    exclude-filter: (?i)套餐|剩余|流量|到期|重置|频道|订阅|官网|禁止|客户端|有效|联系|测试|节点|日期|群组|加入|通知|维护|网址|地址|下载|更新|APP|登录|严禁|海外
+    url: 订阅链接1
+    path: ./providers/link1.yaml
+  link2:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    header: *id005
+    health-check: *id006
+    exclude-filter: (?i)套餐|剩余|流量|到期|重置|频道|订阅|官网|禁止|客户端|有效|联系|测试|节点|日期|群组|加入|通知|维护|网址|地址|下载|更新|APP|登录|严禁|海外
+    url: 订阅链接2
+    path: ./providers/link2.yaml
+  link3:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    header: *id005
+    health-check: *id006
+    exclude-filter: (?i)套餐|剩余|流量|到期|重置|频道|订阅|官网|禁止|客户端|有效|联系|测试|节点|日期|群组|加入|通知|维护|网址|地址|下载|更新|APP|登录|严禁|海外
+    url: 订阅链接3
+    path: ./providers/link3.yaml

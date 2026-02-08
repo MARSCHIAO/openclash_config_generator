@@ -1,36 +1,6 @@
 # Processed: raw_configs/external/General_Config/Kerronex/config.yaml
 # Providers: 2 proxy, 24 rule
 
-proxy-providers:
-  s1:
-    type: http
-    udp: true
-    interval: 86400
-    proxy: DIRECTLY
-    lazy: true
-    health-check: &id001
-      enable: true
-      url: http://www.gstatic.com/generate_204
-      interval: 600
-      timeout: 5
-      lazy: true
-      expected-status: '204'
-      method: HEAD
-    url: ''
-    path: ./proxy_provider/s1.yaml
-    override:
-      additional-prefix: s1 »
-  s2:
-    type: http
-    udp: true
-    interval: 86400
-    proxy: DIRECTLY
-    lazy: true
-    health-check: *id001
-    url: ''
-    path: ./proxy_provider/s2.yaml
-    override:
-      additional-prefix: s2 »
 proxy-groups:
 - name: Proxy
   type: select
@@ -47,7 +17,7 @@ proxy-groups:
   proxies:
   - 美国节点
   icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/ai.png
-- use: &id002
+- use: &id001
   - s1
   name: 台湾故转
   type: fallback
@@ -60,7 +30,7 @@ proxy-groups:
   hidden: false
   filter: (?i)(台湾|TW)
   icon: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/icon/color/asn.png
-- use: *id002
+- use: *id001
   name: 日本故转
   type: fallback
   interval: 6
@@ -72,7 +42,7 @@ proxy-groups:
   hidden: false
   filter: (?i)(🇯🇵|日本|東京|东京|JP|japan|tokyo|osaka)
   icon: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/icon/color/asn.png
-- use: *id002
+- use: *id001
   name: 香港自动
   type: url-test
   interval: 6
@@ -85,7 +55,7 @@ proxy-groups:
   hidden: false
   filter: (?i)(香港|hk|🇭🇰|hong\s?kong)
   icon: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/icon/color/auto.png
-- use: *id002
+- use: *id001
   name: 日本自动
   type: url-test
   interval: 6
@@ -98,7 +68,7 @@ proxy-groups:
   hidden: false
   filter: (?i)(🇯🇵|日本|東京|东京|JP|japan|tokyo|osaka)
   icon: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/icon/color/auto.png
-- use: *id002
+- use: *id001
   name: YouTube
   hidden: true
   type: select
@@ -117,7 +87,7 @@ proxy-groups:
   - DIRECTLY
   - Proxy
   icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/trackerslist.png
-- use: &id003
+- use: &id002
   - s1
   - s2
   name: 美国节点
@@ -126,14 +96,14 @@ proxy-groups:
   include-all: true
   filter: (?i)(🇺🇸|美国|US|united\s?states|america|usa|洛杉矶|达拉斯|New\s?York|西雅图)
   icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
-- use: *id003
+- use: *id002
   name: 日本节点
   type: select
   skip-cert-verify: true
   include-all: true
   filter: (?i)(🇯🇵|日本|東京|东京|JP|japan|tokyo|osaka)
   icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
-- use: *id003
+- use: *id002
   name: 全部节点
   type: select
   icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/World_Map.png
@@ -145,44 +115,6 @@ proxy-groups:
   - DIRECTLY
   - Proxy
   icon: https://testingcf.jsdelivr.net/gh/aihdde/Rules@master/icon/fish.png
-rules:
-- AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT
-- AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN))),REJECT
-- DOMAIN-SUFFIX,2022822.xyz,DIRECTLY
-- DOMAIN-SUFFIX,download.nvidia.com,DIRECTLY
-- RULE-SET,AWAvenue_Ads_Rule,REJECT
-- RULE-SET,telegram_ip,Proxy,no-resolve
-- RULE-SET,Telegram_No_Resolve,Proxy,no-resolve
-- PROCESS-NAME-REGEX,.*telegram.*,Proxy
-- RULE-SET,telegram_domain,Proxy
-- GEOSITE,private,DIRECT
-- GEOSITE,category-public-tracker,DIRECT
-- GEOSITE,category-games@cn,DIRECT
-- GEOSITE,apple@cn,DIRECT
-- GEOSITE,icloud,DIRECT
-- GEOSITE,microsoft@cn,DIRECT
-- GEOSITE,onedrive,DIRECT
-- GEOSITE,microsoft,Proxy
-- GEOSITE,telegram,Proxy
-- GEOSITE,category-ai-!cn,AI
-- GEOIP,telegram,Proxy,no-resolve
-- GEOIP,private,DIRECT,no-resolve
-- RULE-SET,ai,AI
-- RULE-SET,youtube_domain,YouTube
-- RULE-SET,speedtest_domain,Speedtest
-- RULE-SET,global_non_ip,Proxy
-- RULE-SET,skk_direct,DIRECT
-- RULE-SET,domestic_non_ip,DIRECT
-- RULE-SET,domestic_ip,DIRECT,no-resolve
-- RULE-SET,china_ip,DIRECT,no-resolve
-- RULE-SET,china_ip_ipv6,DIRECT,no-resolve
-- RULE-SET,proxy,Proxy
-- RULE-SET,gfw_domain,Proxy
-- DOMAIN-SUFFIX,cn,DIRECT
-- RULE-SET,blackmatrix7_direct,DIRECTLY
-- RULE-SET,trackerslist,Trackerslist
-- GEOIP,CN,DIRECT
-- MATCH,漏网之鱼
 rule-providers:
   AWAvenue_Ads_Rule:
     type: http
@@ -352,3 +284,71 @@ rule-providers:
     format: mrs
     path: ./ruleset/speedtest_domain.mrs
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ookla-speedtest.mrs
+rules:
+- AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT
+- AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN))),REJECT
+- DOMAIN-SUFFIX,2022822.xyz,DIRECTLY
+- DOMAIN-SUFFIX,download.nvidia.com,DIRECTLY
+- RULE-SET,AWAvenue_Ads_Rule,REJECT
+- RULE-SET,telegram_ip,Proxy,no-resolve
+- RULE-SET,Telegram_No_Resolve,Proxy,no-resolve
+- PROCESS-NAME-REGEX,.*telegram.*,Proxy
+- RULE-SET,telegram_domain,Proxy
+- GEOSITE,private,DIRECT
+- GEOSITE,category-public-tracker,DIRECT
+- GEOSITE,category-games@cn,DIRECT
+- GEOSITE,apple@cn,DIRECT
+- GEOSITE,icloud,DIRECT
+- GEOSITE,microsoft@cn,DIRECT
+- GEOSITE,onedrive,DIRECT
+- GEOSITE,microsoft,Proxy
+- GEOSITE,telegram,Proxy
+- GEOSITE,category-ai-!cn,AI
+- GEOIP,telegram,Proxy,no-resolve
+- GEOIP,private,DIRECT,no-resolve
+- RULE-SET,ai,AI
+- RULE-SET,youtube_domain,YouTube
+- RULE-SET,speedtest_domain,Speedtest
+- RULE-SET,global_non_ip,Proxy
+- RULE-SET,skk_direct,DIRECT
+- RULE-SET,domestic_non_ip,DIRECT
+- RULE-SET,domestic_ip,DIRECT,no-resolve
+- RULE-SET,china_ip,DIRECT,no-resolve
+- RULE-SET,china_ip_ipv6,DIRECT,no-resolve
+- RULE-SET,proxy,Proxy
+- RULE-SET,gfw_domain,Proxy
+- DOMAIN-SUFFIX,cn,DIRECT
+- RULE-SET,blackmatrix7_direct,DIRECTLY
+- RULE-SET,trackerslist,Trackerslist
+- GEOIP,CN,DIRECT
+- MATCH,漏网之鱼
+proxy-providers:
+  s1:
+    type: http
+    udp: true
+    interval: 86400
+    proxy: DIRECTLY
+    lazy: true
+    health-check: &id003
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 600
+      timeout: 5
+      lazy: true
+      expected-status: '204'
+      method: HEAD
+    url: ''
+    path: ./proxy_provider/s1.yaml
+    override:
+      additional-prefix: s1 »
+  s2:
+    type: http
+    udp: true
+    interval: 86400
+    proxy: DIRECTLY
+    lazy: true
+    health-check: *id003
+    url: ''
+    path: ./proxy_provider/s2.yaml
+    override:
+      additional-prefix: s2 »

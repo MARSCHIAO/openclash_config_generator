@@ -1,16 +1,6 @@
 # Processed: raw_configs/external/General_Config/ClashConnectRules/Clash.yaml
 # Providers: 1 proxy, 66 rule
 
-proxy-providers:
-  all-proxies:
-    type: http
-    url: https://example.com/your-subscription-url
-    interval: 3600
-    path: ./providers/all-proxies.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
 proxy-groups:
 - name: 🚀 节点选择
   type: select
@@ -279,75 +269,6 @@ proxy-groups:
   - DIRECT
   - 🚀 节点选择
   - 🚀 手动切换
-rules:
-- RULE-SET,AdBlock,🚫 国外广告
-- RULE-SET,HTTPDNS,🚫 国外广告
-- RULE-SET,Special,DIRECT
-- RULE-SET,AI Suite,🤖 AI服务
-- RULE-SET,Netflix,🌍 国外媒体
-- RULE-SET,Disney Plus,🌍 国外媒体
-- RULE-SET,YouTube,📹 YouTube
-- RULE-SET,Max,🌍 国外媒体
-- RULE-SET,Spotify,🌍 国外媒体
-- RULE-SET,Bilibili,🎯 国内流量
-- RULE-SET,IQ,🎯 国内流量
-- RULE-SET,IQIYI,🎯 国内流量
-- RULE-SET,Letv,🎯 国内流量
-- RULE-SET,Netease Music,🎯 国内流量
-- RULE-SET,Tencent Video,🎯 国内流量
-- RULE-SET,WeTV,🎯 国内流量
-- RULE-SET,Youku,🎯 国内流量
-- RULE-SET,Abema TV,🌍 国外媒体
-- RULE-SET,Bahamut,🌍 国外媒体
-- RULE-SET,DMM,🌍 国外媒体
-- RULE-SET,Fox+,🌍 国外媒体
-- RULE-SET,Hulu Japan,🌍 国外媒体
-- RULE-SET,Japonx,🌍 国外媒体
-- RULE-SET,JOOX,🌍 国外媒体
-- RULE-SET,KKBOX,🌍 国外媒体
-- RULE-SET,KKTV,🌍 国外媒体
-- RULE-SET,Line TV,🌍 国外媒体
-- RULE-SET,myTV SUPER,🌍 国外媒体
-- RULE-SET,Niconico,🌍 国外媒体
-- RULE-SET,ViuTV,🌍 国外媒体
-- RULE-SET,ABC,🌍 国外媒体
-- RULE-SET,Amazon,🌍 国外媒体
-- RULE-SET,BBC iPlayer,🌍 国外媒体
-- RULE-SET,DAZN,🌍 国外媒体
-- RULE-SET,Discovery Plus,🌍 国外媒体
-- RULE-SET,encoreTVB,🌍 国外媒体
-- RULE-SET,F1 TV,🌍 国外媒体
-- RULE-SET,Fox Now,🌍 国外媒体
-- RULE-SET,Hulu,🌍 国外媒体
-- RULE-SET,Pandora,🌍 国外媒体
-- RULE-SET,PBS,🌍 国外媒体
-- RULE-SET,Pornhub,🌍 国外媒体
-- RULE-SET,Soundcloud,🌍 国外媒体
-- RULE-SET,Telegram,✈️ Telegram
-- RULE-SET,Crypto,🌐 国际流量
-- RULE-SET,Discord,🌐 国际流量
-- RULE-SET,Google FCM,📧 Google FCM
-- RULE-SET,Google,🔍 谷歌服务
-- RULE-SET,Google Drive,🔍 谷歌服务
-- RULE-SET,YouTube Music,📹 YouTube
-- RULE-SET,Google Search,🔍 谷歌服务
-- RULE-SET,Microsoft,Ⓜ️ Microsoft
-- RULE-SET,PayPal,🌐 国际流量
-- RULE-SET,Scholar,🔍 谷歌服务
-- RULE-SET,Speedtest,🌐 国际流量
-- RULE-SET,Steam,🌐 国际流量
-- RULE-SET,TikTok,🌐 国际流量
-- RULE-SET,Apple Music,🍎 Apple服务
-- RULE-SET,Apple News,🍎 Apple服务
-- RULE-SET,Apple TV,🍎 Apple服务
-- RULE-SET,Apple,🍎 Apple服务
-- RULE-SET,miHoYo,🎯 国内流量
-- RULE-SET,PROXY,🌐 国际流量
-- RULE-SET,Domestic,🎯 国内流量
-- RULE-SET,Domestic IPs,🎯 国内流量
-- RULE-SET,LAN,DIRECT
-- GEOIP,CN,🎯 国内流量
-- MATCH,🌐 国际流量
 rule-providers:
   AdBlock:
     type: http
@@ -745,3 +666,82 @@ rule-providers:
     url: https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/miHoYo.yaml
     path: ./Rules/miHoYo
     interval: 604800
+rules:
+- RULE-SET,AdBlock,🚫 国外广告
+- RULE-SET,HTTPDNS,🚫 国外广告
+- RULE-SET,Special,DIRECT
+- RULE-SET,AI Suite,🤖 AI服务
+- RULE-SET,Netflix,🌍 国外媒体
+- RULE-SET,Disney Plus,🌍 国外媒体
+- RULE-SET,YouTube,📹 YouTube
+- RULE-SET,Max,🌍 国外媒体
+- RULE-SET,Spotify,🌍 国外媒体
+- RULE-SET,Bilibili,🎯 国内流量
+- RULE-SET,IQ,🎯 国内流量
+- RULE-SET,IQIYI,🎯 国内流量
+- RULE-SET,Letv,🎯 国内流量
+- RULE-SET,Netease Music,🎯 国内流量
+- RULE-SET,Tencent Video,🎯 国内流量
+- RULE-SET,WeTV,🎯 国内流量
+- RULE-SET,Youku,🎯 国内流量
+- RULE-SET,Abema TV,🌍 国外媒体
+- RULE-SET,Bahamut,🌍 国外媒体
+- RULE-SET,DMM,🌍 国外媒体
+- RULE-SET,Fox+,🌍 国外媒体
+- RULE-SET,Hulu Japan,🌍 国外媒体
+- RULE-SET,Japonx,🌍 国外媒体
+- RULE-SET,JOOX,🌍 国外媒体
+- RULE-SET,KKBOX,🌍 国外媒体
+- RULE-SET,KKTV,🌍 国外媒体
+- RULE-SET,Line TV,🌍 国外媒体
+- RULE-SET,myTV SUPER,🌍 国外媒体
+- RULE-SET,Niconico,🌍 国外媒体
+- RULE-SET,ViuTV,🌍 国外媒体
+- RULE-SET,ABC,🌍 国外媒体
+- RULE-SET,Amazon,🌍 国外媒体
+- RULE-SET,BBC iPlayer,🌍 国外媒体
+- RULE-SET,DAZN,🌍 国外媒体
+- RULE-SET,Discovery Plus,🌍 国外媒体
+- RULE-SET,encoreTVB,🌍 国外媒体
+- RULE-SET,F1 TV,🌍 国外媒体
+- RULE-SET,Fox Now,🌍 国外媒体
+- RULE-SET,Hulu,🌍 国外媒体
+- RULE-SET,Pandora,🌍 国外媒体
+- RULE-SET,PBS,🌍 国外媒体
+- RULE-SET,Pornhub,🌍 国外媒体
+- RULE-SET,Soundcloud,🌍 国外媒体
+- RULE-SET,Telegram,✈️ Telegram
+- RULE-SET,Crypto,🌐 国际流量
+- RULE-SET,Discord,🌐 国际流量
+- RULE-SET,Google FCM,📧 Google FCM
+- RULE-SET,Google,🔍 谷歌服务
+- RULE-SET,Google Drive,🔍 谷歌服务
+- RULE-SET,YouTube Music,📹 YouTube
+- RULE-SET,Google Search,🔍 谷歌服务
+- RULE-SET,Microsoft,Ⓜ️ Microsoft
+- RULE-SET,PayPal,🌐 国际流量
+- RULE-SET,Scholar,🔍 谷歌服务
+- RULE-SET,Speedtest,🌐 国际流量
+- RULE-SET,Steam,🌐 国际流量
+- RULE-SET,TikTok,🌐 国际流量
+- RULE-SET,Apple Music,🍎 Apple服务
+- RULE-SET,Apple News,🍎 Apple服务
+- RULE-SET,Apple TV,🍎 Apple服务
+- RULE-SET,Apple,🍎 Apple服务
+- RULE-SET,miHoYo,🎯 国内流量
+- RULE-SET,PROXY,🌐 国际流量
+- RULE-SET,Domestic,🎯 国内流量
+- RULE-SET,Domestic IPs,🎯 国内流量
+- RULE-SET,LAN,DIRECT
+- GEOIP,CN,🎯 国内流量
+- MATCH,🌐 国际流量
+proxy-providers:
+  all-proxies:
+    type: http
+    url: https://example.com/your-subscription-url
+    interval: 3600
+    path: ./providers/all-proxies.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204

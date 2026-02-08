@@ -1,16 +1,6 @@
 # Processed: raw_configs/external/General_Config/liandu2024/clash-fallback.yaml
 # Providers: 1 proxy, 42 rule
 
-proxy-providers:
-  机场名称:
-    url: 机场订阅地址
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连
 proxy-groups:
 - type: select
   proxies: &id001
@@ -179,50 +169,6 @@ proxy-groups:
   interval: 300
   filter: ^((?!(直连|拒绝|广港|香港|HK|Hong Kong|🇭🇰|HongKong|广台|台湾|台灣|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan|广日|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan|广新|新加坡|SG|坡|狮城|🇸🇬|Singapore|广美|US|美国|纽约|波特兰|达拉斯|俄勒|凤凰城|费利蒙|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United
     States)).)*$
-rules:
-- RULE-SET,TEST / Domain,Test
-- RULE-SET,Block / Domain,Block
-- RULE-SET,GitHub / Domain,GitHub
-- RULE-SET,ChatGPT / Domain,AI
-- RULE-SET,Claude / Domain,AI
-- RULE-SET,Copilot / Domain,AI
-- RULE-SET,Gemini / Domain,AI
-- RULE-SET,Groq / Domain,AI
-- RULE-SET,Grok / Domain,AI
-- RULE-SET,Meta AI / Domain,AI
-- RULE-SET,Perplexity / Domain,AI
-- RULE-SET,Microsoft / Domain,Microsoft
-- RULE-SET,Apple / Domain,Apple
-- RULE-SET,Apple-CN / Domain,Apple
-- RULE-SET,Apple-Custome / Domain,Apple
-- RULE-SET,OKX / Domain,Crypto
-- RULE-SET,Bybit / Domain,Crypto
-- RULE-SET,Binance / Domain,Crypto
-- RULE-SET,TikTok / Domain,Stream Media
-- RULE-SET,Netflix / Domain,Stream Media
-- RULE-SET,Netflix / IP,Stream Media,no-resolve
-- RULE-SET,Disney / Domain,Stream Media
-- RULE-SET,Amazon / Domain,Stream Media
-- RULE-SET,HBO / Domain,Stream Media
-- RULE-SET,Crunchyroll / Domain,Stream Media
-- RULE-SET,Popcorn / Domain,Stream Media
-- RULE-SET,Spotify / Domain,Stream Media
-- RULE-SET,Steam / Domain,Games
-- RULE-SET,Epic / Domain,Games
-- RULE-SET,EA / Domain,Games
-- RULE-SET,Blizzard / Domain,Games
-- RULE-SET,UBI / Domain,Games
-- RULE-SET,PlayStation / Domain,Games
-- RULE-SET,Nintend / Domain,Games
-- RULE-SET,Nvidia / Domain,Nvidia
-- RULE-SET,Reddit / Domain,Reddit
-- RULE-SET,Proxy / Domain,国外
-- RULE-SET,Globe / Domain,国外
-- RULE-SET,Direct / Domain,国内
-- RULE-SET,China / Domain,国内
-- RULE-SET,China / IP,国内,no-resolve
-- RULE-SET,Private / Domain,国内
-- MATCH,其他
 rule-providers:
   TEST / Domain:
     type: http
@@ -476,3 +422,57 @@ rule-providers:
     behavior: ipcidr
     format: mrs
     url: https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geoip/cn.mrs
+rules:
+- RULE-SET,TEST / Domain,Test
+- RULE-SET,Block / Domain,Block
+- RULE-SET,GitHub / Domain,GitHub
+- RULE-SET,ChatGPT / Domain,AI
+- RULE-SET,Claude / Domain,AI
+- RULE-SET,Copilot / Domain,AI
+- RULE-SET,Gemini / Domain,AI
+- RULE-SET,Groq / Domain,AI
+- RULE-SET,Grok / Domain,AI
+- RULE-SET,Meta AI / Domain,AI
+- RULE-SET,Perplexity / Domain,AI
+- RULE-SET,Microsoft / Domain,Microsoft
+- RULE-SET,Apple / Domain,Apple
+- RULE-SET,Apple-CN / Domain,Apple
+- RULE-SET,Apple-Custome / Domain,Apple
+- RULE-SET,OKX / Domain,Crypto
+- RULE-SET,Bybit / Domain,Crypto
+- RULE-SET,Binance / Domain,Crypto
+- RULE-SET,TikTok / Domain,Stream Media
+- RULE-SET,Netflix / Domain,Stream Media
+- RULE-SET,Netflix / IP,Stream Media,no-resolve
+- RULE-SET,Disney / Domain,Stream Media
+- RULE-SET,Amazon / Domain,Stream Media
+- RULE-SET,HBO / Domain,Stream Media
+- RULE-SET,Crunchyroll / Domain,Stream Media
+- RULE-SET,Popcorn / Domain,Stream Media
+- RULE-SET,Spotify / Domain,Stream Media
+- RULE-SET,Steam / Domain,Games
+- RULE-SET,Epic / Domain,Games
+- RULE-SET,EA / Domain,Games
+- RULE-SET,Blizzard / Domain,Games
+- RULE-SET,UBI / Domain,Games
+- RULE-SET,PlayStation / Domain,Games
+- RULE-SET,Nintend / Domain,Games
+- RULE-SET,Nvidia / Domain,Nvidia
+- RULE-SET,Reddit / Domain,Reddit
+- RULE-SET,Proxy / Domain,国外
+- RULE-SET,Globe / Domain,国外
+- RULE-SET,Direct / Domain,国内
+- RULE-SET,China / Domain,国内
+- RULE-SET,China / IP,国内,no-resolve
+- RULE-SET,Private / Domain,国内
+- MATCH,其他
+proxy-providers:
+  机场名称:
+    url: 机场订阅地址
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 直连

@@ -1,28 +1,6 @@
 # Processed: raw_configs/external/Smart_Mode/HenryChiao/MihomoSmartAIO.yaml
 # Providers: 2 proxy, 51 rule
 
-proxy-providers:
-  优质服务商:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    health-check: &id001
-      enable: true
-      url: https://www.google.com/generate_204
-      interval: 300
-    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
-    url: 优质订阅源地址
-    override:
-      additional-prefix: '[优] '
-  备用服务商:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    health-check: *id001
-    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
-    url: 备用订阅源地址
-    override:
-      additional-prefix: '[备] '
 proxy-groups:
 - type: select
   proxies:
@@ -57,7 +35,7 @@ proxy-groups:
   - 直接连接
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
 - type: select
-  proxies: &id002
+  proxies: &id001
   - 默认代理
   - 故障转移
   - 香港策略
@@ -89,7 +67,7 @@ proxy-groups:
   name: 国内流量
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 兜底流量
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
 - name: 直接连接
@@ -99,7 +77,7 @@ proxy-groups:
   hidden: true
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Direct.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 网络测试
   include-all: true
   filter: ^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
@@ -124,51 +102,51 @@ proxy-groups:
   - 欧盟策略
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Null_Nation.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: Emby服
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 油管视频
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/YouTube.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 奈飞视频
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Netflix.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 迪士尼+
   icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/disney.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: Max
   icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/max.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: Prime Video
   icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/primevideo.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: Apple TV+
   icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/appletv.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: TikTok
   icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/tiktok.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 哔哩哔哩
   icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/bilibili.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: Spotify
   icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/spotify.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 国外媒体
   icon: https://github.com/DustinWin/ruleset_geodata/releases/download/icons/media.png
 - type: select
-  proxies: &id003
+  proxies: &id002
   - 美国策略
   - 默认代理
   - 故障转移
@@ -184,19 +162,19 @@ proxy-groups:
   name: 新闻媒体
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple_News.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 电报消息
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 推特社交
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/X.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 社交平台
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/PBS.png
 - type: select
-  proxies: *id003
+  proxies: *id002
   name: 人工智能
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
 - type: select
@@ -216,23 +194,23 @@ proxy-groups:
   name: 货币平台
   icon: https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/Bitcloud.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 游戏平台
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Game.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: Github
   icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/04ProxySoft/github(1).png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 微软服务
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 谷歌服务
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Google_Search.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 苹果服务
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple.png
 - name: 香港策略
@@ -606,59 +584,6 @@ proxy-groups:
   include-all: true
   policy-priority: 优:2;中:1;备:0.2
   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/European_Union.png
-rules:
-- RULE-SET,Tracking,REJECT
-- RULE-SET,AWAvenueAds,REJECT
-- RULE-SET,Advertising,REJECT
-- AND,((DST-PORT,443),(NETWORK,UDP)),REJECT
-- RULE-SET,ukwifi,UKwifi
-- RULE-SET,LocationDKS,抖快书定位
-- RULE-SET,Private,直接连接
-- RULE-SET,Direct,直接连接
-- RULE-SET,XPTV,直接连接
-- RULE-SET,Download,直接连接
-- RULE-SET,AppleCN,直接连接
-- RULE-SET,AI,人工智能
-- DOMAIN-KEYWORD,speedtest,网络测试
-- RULE-SET,Speedtest,网络测试
-- RULE-SET,Twitter,推特社交
-- RULE-SET,Telegram,电报消息
-- RULE-SET,SocialMedia,社交平台
-- RULE-SET,NewsMedia,新闻媒体
-- DOMAIN-SUFFIX,steamserver.net,DIRECT
-- RULE-SET,Games,游戏平台
-- RULE-SET,Crypto,货币平台
-- RULE-SET,Emby,Emby服
-- RULE-SET,Netflix,奈飞视频
-- RULE-SET,YouTube,油管视频
-- RULE-SET,disney,迪士尼+
-- RULE-SET,max,Max
-- RULE-SET,primevideo,Prime Video
-- RULE-SET,appletv,Apple TV+
-- RULE-SET,tiktok,TikTok
-- RULE-SET,bilibili,哔哩哔哩
-- RULE-SET,bahamut,台湾策略
-- RULE-SET,spotify,Spotify
-- RULE-SET,media,国外媒体
-- RULE-SET,Apple,苹果服务
-- RULE-SET,Google,谷歌服务
-- RULE-SET,github,Github
-- RULE-SET,Microsoft,微软服务
-- RULE-SET,Proxy,国外流量
-- RULE-SET,China,国内流量
-- RULE-SET,AdvertisingIP,REJECT,no-resolve
-- RULE-SET,PrivateIP,直接连接,no-resolve
-- RULE-SET,XPTVIP,直接连接,no-resolve
-- RULE-SET,AIIP,人工智能,no-resolve
-- RULE-SET,TelegramIP,电报消息,no-resolve
-- RULE-SET,SocialMediaIP,社交平台,no-resolve
-- RULE-SET,EmbyIP,Emby服,no-resolve
-- RULE-SET,NetflixIP,奈飞视频,no-resolve
-- RULE-SET,mediaip,国外媒体,no-resolve
-- RULE-SET,GoogleIP,谷歌服务,no-resolve
-- RULE-SET,ProxyIP,国外流量,no-resolve
-- RULE-SET,ChinaIP,国内流量
-- MATCH,兜底流量
 rule-providers:
   Tracking:
     type: http
@@ -967,3 +892,78 @@ rule-providers:
     format: mrs
     interval: 86400
     url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs
+rules:
+- RULE-SET,Tracking,REJECT
+- RULE-SET,AWAvenueAds,REJECT
+- RULE-SET,Advertising,REJECT
+- AND,((DST-PORT,443),(NETWORK,UDP)),REJECT
+- RULE-SET,ukwifi,UKwifi
+- RULE-SET,LocationDKS,抖快书定位
+- RULE-SET,Private,直接连接
+- RULE-SET,Direct,直接连接
+- RULE-SET,XPTV,直接连接
+- RULE-SET,Download,直接连接
+- RULE-SET,AppleCN,直接连接
+- RULE-SET,AI,人工智能
+- DOMAIN-KEYWORD,speedtest,网络测试
+- RULE-SET,Speedtest,网络测试
+- RULE-SET,Twitter,推特社交
+- RULE-SET,Telegram,电报消息
+- RULE-SET,SocialMedia,社交平台
+- RULE-SET,NewsMedia,新闻媒体
+- DOMAIN-SUFFIX,steamserver.net,DIRECT
+- RULE-SET,Games,游戏平台
+- RULE-SET,Crypto,货币平台
+- RULE-SET,Emby,Emby服
+- RULE-SET,Netflix,奈飞视频
+- RULE-SET,YouTube,油管视频
+- RULE-SET,disney,迪士尼+
+- RULE-SET,max,Max
+- RULE-SET,primevideo,Prime Video
+- RULE-SET,appletv,Apple TV+
+- RULE-SET,tiktok,TikTok
+- RULE-SET,bilibili,哔哩哔哩
+- RULE-SET,bahamut,台湾策略
+- RULE-SET,spotify,Spotify
+- RULE-SET,media,国外媒体
+- RULE-SET,Apple,苹果服务
+- RULE-SET,Google,谷歌服务
+- RULE-SET,github,Github
+- RULE-SET,Microsoft,微软服务
+- RULE-SET,Proxy,国外流量
+- RULE-SET,China,国内流量
+- RULE-SET,AdvertisingIP,REJECT,no-resolve
+- RULE-SET,PrivateIP,直接连接,no-resolve
+- RULE-SET,XPTVIP,直接连接,no-resolve
+- RULE-SET,AIIP,人工智能,no-resolve
+- RULE-SET,TelegramIP,电报消息,no-resolve
+- RULE-SET,SocialMediaIP,社交平台,no-resolve
+- RULE-SET,EmbyIP,Emby服,no-resolve
+- RULE-SET,NetflixIP,奈飞视频,no-resolve
+- RULE-SET,mediaip,国外媒体,no-resolve
+- RULE-SET,GoogleIP,谷歌服务,no-resolve
+- RULE-SET,ProxyIP,国外流量,no-resolve
+- RULE-SET,ChinaIP,国内流量
+- MATCH,兜底流量
+proxy-providers:
+  优质服务商:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    health-check: &id003
+      enable: true
+      url: https://www.google.com/generate_204
+      interval: 300
+    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
+    url: 优质订阅源地址
+    override:
+      additional-prefix: '[优] '
+  备用服务商:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    health-check: *id003
+    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
+    url: 备用订阅源地址
+    override:
+      additional-prefix: '[备] '

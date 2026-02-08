@@ -1,28 +1,6 @@
 # Processed: raw_configs/external/Smart_Mode/666OS/OneSmart_Lite_Config.yaml
 # Providers: 2 proxy, 19 rule
 
-proxy-providers:
-  优质服务商:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    health-check: &id001
-      enable: true
-      url: https://www.google.com/generate_204
-      interval: 300
-    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
-    url: 优质订阅源地址
-    override:
-      additional-prefix: '[优] '
-  备用服务商:
-    type: http
-    interval: 86400
-    proxy: DIRECT
-    health-check: *id001
-    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
-    url: 备用订阅源地址
-    override:
-      additional-prefix: '[备] '
 proxy-groups:
 - type: select
   proxies:
@@ -38,7 +16,7 @@ proxy-groups:
   name: 一键智能
   icon: https://github.com/666OS/YYDS/raw/main/mihomo/image/mihomo.png
 - type: select
-  proxies: &id002
+  proxies: &id001
   - 一键智能
   - 香港智能
   - 台湾智能
@@ -52,15 +30,15 @@ proxy-groups:
   name: 人工智能
   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 社交平台
   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/PBS.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 国际媒体
   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/DomesticMedia.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 国外流量
   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png
 - type: select
@@ -78,7 +56,7 @@ proxy-groups:
   name: 国内流量
   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
 - type: select
-  proxies: *id002
+  proxies: *id001
   name: 兜底流量
   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
 - name: 手动选择
@@ -169,28 +147,6 @@ proxy-groups:
   include-all: true
   policy-priority: 优:2;备:0.5
   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/European_Union.png
-rules:
-- AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((GEOIP,CN)))),REJECT
-- RULE-SET,Private,直接连接
-- RULE-SET,Direct,直接连接
-- RULE-SET,XPTV,直接连接
-- RULE-SET,AI,人工智能
-- RULE-SET,Telegram,社交平台
-- RULE-SET,SocialMedia,社交平台
-- RULE-SET,Emby,国际媒体
-- RULE-SET,Streaming,国际媒体
-- RULE-SET,Proxy,国外流量
-- RULE-SET,China,国内流量
-- RULE-SET,PrivateIP,直接连接,no-resolve
-- RULE-SET,XPTVIP,直接连接,no-resolve
-- RULE-SET,AIIP,人工智能,no-resolve
-- RULE-SET,TelegramIP,社交平台,no-resolve
-- RULE-SET,SocialMediaIP,社交平台,no-resolve
-- RULE-SET,EmbyIP,国际媒体,no-resolve
-- RULE-SET,StreamingIP,国际媒体,no-resolve
-- RULE-SET,ProxyIP,国外流量,no-resolve
-- RULE-SET,ChinaIP,国内流量
-- MATCH,兜底流量
 rule-providers:
   Private:
     type: http
@@ -306,3 +262,47 @@ rule-providers:
     format: mrs
     interval: 86400
     url: https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
+rules:
+- AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((GEOIP,CN)))),REJECT
+- RULE-SET,Private,直接连接
+- RULE-SET,Direct,直接连接
+- RULE-SET,XPTV,直接连接
+- RULE-SET,AI,人工智能
+- RULE-SET,Telegram,社交平台
+- RULE-SET,SocialMedia,社交平台
+- RULE-SET,Emby,国际媒体
+- RULE-SET,Streaming,国际媒体
+- RULE-SET,Proxy,国外流量
+- RULE-SET,China,国内流量
+- RULE-SET,PrivateIP,直接连接,no-resolve
+- RULE-SET,XPTVIP,直接连接,no-resolve
+- RULE-SET,AIIP,人工智能,no-resolve
+- RULE-SET,TelegramIP,社交平台,no-resolve
+- RULE-SET,SocialMediaIP,社交平台,no-resolve
+- RULE-SET,EmbyIP,国际媒体,no-resolve
+- RULE-SET,StreamingIP,国际媒体,no-resolve
+- RULE-SET,ProxyIP,国外流量,no-resolve
+- RULE-SET,ChinaIP,国内流量
+- MATCH,兜底流量
+proxy-providers:
+  优质服务商:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    health-check: &id002
+      enable: true
+      url: https://www.google.com/generate_204
+      interval: 300
+    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
+    url: 优质订阅源地址
+    override:
+      additional-prefix: '[优] '
+  备用服务商:
+    type: http
+    interval: 86400
+    proxy: DIRECT
+    health-check: *id002
+    filter: ^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
+    url: 备用订阅源地址
+    override:
+      additional-prefix: '[备] '

@@ -1,16 +1,6 @@
 # Processed: raw_configs/external/General_Config/yyhhyyyyyy/mihomo_single.yaml
 # Providers: 1 proxy, 26 rule
 
-proxy-providers:
-  Node:
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: http://connectivitycheck.platform.hicloud.com/generate_204
-      interval: 300
-    url: 替换订阅链接
-    path: ./proxy_provider/providers.yaml
 proxy-groups:
 - name: 🎯 节点选择
   type: select
@@ -546,34 +536,6 @@ proxy-groups:
   include-all: true
   name: AllIn - 自动选择
   filter: ^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)\b|(\d{4}-\d{2}-\d{2}|\d+G)))).*$
-rules:
-- RULE-SET,reject_non_ip,REJECT
-- RULE-SET,reject_domainset,REJECT
-- RULE-SET,reject_non_ip_drop,REJECT-DROP
-- RULE-SET,reject_non_ip_no_drop,REJECT
-- RULE-SET,cdn_domainset,🎯 节点选择
-- RULE-SET,cdn_non_ip,🎯 节点选择
-- RULE-SET,stream_non_ip,🇺🇸 - 自动选择
-- RULE-SET,telegram_non_ip,✈️ 电报信息
-- RULE-SET,apple_cdn,DIRECT
-- RULE-SET,download_domainset,🎯 节点选择
-- RULE-SET,download_non_ip,🎯 节点选择
-- RULE-SET,microsoft_cdn_non_ip,DIRECT
-- RULE-SET,apple_cn_non_ip,DIRECT
-- RULE-SET,apple_services,🍎 苹果服务
-- RULE-SET,microsoft_non_ip,Ⓜ️ 微软服务
-- RULE-SET,ai_non_ip,🤖 AIGC
-- RULE-SET,global_non_ip,🎯 节点选择
-- RULE-SET,domestic_non_ip,DIRECT
-- RULE-SET,direct_non_ip,DIRECT
-- RULE-SET,lan_non_ip,DIRECT
-- RULE-SET,reject_ip,REJECT
-- RULE-SET,telegram_ip,✈️ 电报信息
-- RULE-SET,stream_ip,🇺🇸 - 自动选择
-- RULE-SET,lan_ip,DIRECT
-- RULE-SET,domestic_ip,DIRECT
-- RULE-SET,china_ip,DIRECT
-- MATCH,🎯 节点选择
 rule-providers:
   reject_non_ip_no_drop:
     type: http
@@ -783,3 +745,41 @@ rule-providers:
     proxy: 🎯 节点选择
     url: https://ruleset.skk.moe/Clash/ip/china_ip.txt
     path: ./rule_set/sukkaw_ruleset/china_ip.txt
+rules:
+- RULE-SET,reject_non_ip,REJECT
+- RULE-SET,reject_domainset,REJECT
+- RULE-SET,reject_non_ip_drop,REJECT-DROP
+- RULE-SET,reject_non_ip_no_drop,REJECT
+- RULE-SET,cdn_domainset,🎯 节点选择
+- RULE-SET,cdn_non_ip,🎯 节点选择
+- RULE-SET,stream_non_ip,🇺🇸 - 自动选择
+- RULE-SET,telegram_non_ip,✈️ 电报信息
+- RULE-SET,apple_cdn,DIRECT
+- RULE-SET,download_domainset,🎯 节点选择
+- RULE-SET,download_non_ip,🎯 节点选择
+- RULE-SET,microsoft_cdn_non_ip,DIRECT
+- RULE-SET,apple_cn_non_ip,DIRECT
+- RULE-SET,apple_services,🍎 苹果服务
+- RULE-SET,microsoft_non_ip,Ⓜ️ 微软服务
+- RULE-SET,ai_non_ip,🤖 AIGC
+- RULE-SET,global_non_ip,🎯 节点选择
+- RULE-SET,domestic_non_ip,DIRECT
+- RULE-SET,direct_non_ip,DIRECT
+- RULE-SET,lan_non_ip,DIRECT
+- RULE-SET,reject_ip,REJECT
+- RULE-SET,telegram_ip,✈️ 电报信息
+- RULE-SET,stream_ip,🇺🇸 - 自动选择
+- RULE-SET,lan_ip,DIRECT
+- RULE-SET,domestic_ip,DIRECT
+- RULE-SET,china_ip,DIRECT
+- MATCH,🎯 节点选择
+proxy-providers:
+  Node:
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://connectivitycheck.platform.hicloud.com/generate_204
+      interval: 300
+    url: 替换订阅链接
+    path: ./proxy_provider/providers.yaml
